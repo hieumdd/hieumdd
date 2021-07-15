@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   useDisclosure,
   useOutsideClick,
@@ -20,16 +20,19 @@ const Header = () => {
     handler: () => onClose(),
   });
 
-  const handleScrolled = () => {
-    const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 0) {
-      setScrolled(true);
-    } else if (scrolled === 0) {
-      setScrolled(false);
-    }
-  };
-
-  window.addEventListener('scroll', handleScrolled);
+  useEffect(() => {
+    const handleScrolled = () => {
+      const scrolled = document.documentElement.scrollTop;
+      if (scrolled > 0) {
+        setScrolled(true);
+      } else if (scrolled === 0) {
+        setScrolled(false);
+      }
+    };
+  
+    window.addEventListener('scroll', handleScrolled);
+  }, []);
+  
 
   return (
     <Flex
