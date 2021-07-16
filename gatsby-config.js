@@ -2,18 +2,36 @@ require('dotenv').config();
 
 const { githubAPIQuery } = require('./src/api/github');
 
-const GTM_ENV = process.env.NODE_ENV === 'prod' ? 'env-1' :'env-2';
+const GTM_ENV = process.env.NODE_ENV === 'prod' ? 'env-1' : 'env-2';
 
 module.exports = {
   siteMetadata: {
     title: 'hieumdd',
-    description: 'My Personal Portfolio in React, used for testing & show my skills on the Web',
+    description:
+      'My Personal Portfolio in React, used for testing & show my skills on the Web',
     author: 'hieumdd',
-    keywords: `python, javascript, digital analytics, tracking, data engineering`
+    keywords: `python, javascript, digital analytics, tracking, data engineering`,
   },
   plugins: [
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 100,
+          breakpoints: [480, 768, 992, 1280, 1536],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
@@ -61,18 +79,32 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: "GTM-WVHZ39P",
+        id: 'GTM-WVHZ39P',
         includeInDevelopment: true,
-        defaultDataLayer: { platform: "gatsby" },
+        defaultDataLayer: { platform: 'gatsby' },
         gtmAuth: process.env.GTM_AUTH,
         gtmPreview: GTM_ENV,
         enableWebVitalsTracking: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'hieumdd Porfolio',
+        short_name: 'HM',
+        start_url: '/',
+        background_color: '#FFFFFF',
+        theme_color: '#4299e1',
+        display: 'standalone',
+        icon: 'src/static/icons/profile_nord.svg',
+        crossOrigin: `use-credentials`,
+      },
+    },
+    'gatsby-plugin-offline',
   ],
   flags: {
-    THE_FLAG: false
-  }
+    THE_FLAG: false,
+  },
 };

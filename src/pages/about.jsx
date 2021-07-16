@@ -21,7 +21,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import SectionLayout from '../components/SectionLayout';
 import Layout from '../components/Layout';
 
-import techStacks from '../components/techStacks';
+import techStacks from '../data/techStacks';
 
 const query = graphql`
   query About {
@@ -58,9 +58,7 @@ const BioSection = ({ data }) => {
         justifyContent="flex-start"
         alignItems="center"
       >
-        <GatsbyImage
-          image={data.file.childImageSharp.gatsbyImageData}
-        />
+        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} />
         <VStack
           justify="space-between"
           alignItems="flex-start"
@@ -114,12 +112,7 @@ const TechRow = ({ techStack }) => (
 );
 
 const TechDetailsRow = ({ techs }) => (
-  <Wrap
-    spacing={5}
-    justify="flex-start"
-    alignContents="space-between"
-    wrap="wrap"
-  >
+  <Wrap spacing="2rem" justify="flex-start" alignContents="space-between">
     {techs.map((tech) => (
       <WrapItem key={tech.name}>
         <TechCard
@@ -159,7 +152,7 @@ const TechCard = ({ icon, text, textColor, bgColor = 'white', mode }) => {
       className="shadow hover-shadow"
       px="1rem"
       py="0.5rem"
-      spacing={3}
+      spacing="1rem"
       justify="flex-start"
       alignItems="center"
       textColor={textColor}

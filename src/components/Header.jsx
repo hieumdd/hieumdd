@@ -36,6 +36,7 @@ const Header = () => {
 
   return (
     <Flex
+      as='header'
       pos="fixed"
       borderRadius={0}
       width="100%"
@@ -45,7 +46,7 @@ const Header = () => {
       className={isScrolled ? 'shadow' : ''}
     >
       <Container>
-        <Flex direction="column">
+        <Flex as='nav' direction="column">
           <Flex py={4} borderRadius={0} justify="space-between">
             <Box boxSize={8} display={{ base: 'block', md: 'none' }} />
             <Logo />

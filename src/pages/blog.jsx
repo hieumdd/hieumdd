@@ -18,39 +18,39 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
 import SectionLayout from '../components/SectionLayout';
 
-const query = graphql`
-  query Blog {
-    file(relativePath: { eq: "images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, aspectRatio: 3)
+const Blog = () => {
+  const data = useStaticQuery(graphql`
+    query Blog {
+      file(
+        relativePath: { eq: "images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 3)
+        }
       }
-    }
-    allContentfulBlogPost {
-      nodes {
-        createdAt(formatString: "MMM D YY")
-        featuredImage {
-          gatsbyImageData(aspectRatio: 1.69, height: 400)
-        }
-        id
-        slug
-        title
-        tag {
-          backgroundColor
-          name
-          textColor
-        }
-        excerpt {
-          childMarkdownRemark {
-            excerpt(pruneLength: 150)
+      allContentfulBlogPost {
+        nodes {
+          updatedAt(formatString: "MMM D YY")
+          featuredImage {
+            gatsbyImageData(aspectRatio: 1.69, height: 400)
+          }
+          id
+          slug
+          title
+          tag {
+            backgroundColor
+            name
+            textColor
+          }
+          excerpt {
+            childMarkdownRemark {
+              excerpt(pruneLength: 150)
+            }
           }
         }
       }
     }
-  }
-`;
-
-const Blog = () => {
-  const data = useStaticQuery(query);
+  `);
 
   return (
     <Layout title="Blog">
@@ -138,15 +138,18 @@ const PostsSection = ({ data }) => {
 };
 
 const Posts = ({ data }) => (
-  <Wrap spacing="2rem" justify='space-between'>
+  <Wrap spacing="2rem" justify="space-between">
     {data.map((node) => (
-      <WrapItem key={node.id} flex={{base: '1', md: '0 1 calc(50% - 2rem)'}}>
+      <WrapItem
+        key={node.id}
+        flex={{ base: '1 0 calc(100% - 2rem)', md: '1 1 calc(50% - 2rem)' }}
+      >
         <Post
           key={node.id}
           title={node.title}
           excerpt={node.excerpt}
           featuredImage={node.featuredImage.gatsbyImageData}
-          createdAt={node.createdAt}
+          updatedAt={node.updatedAt}
           slug={node.slug}
           tags={node.tag}
         />
@@ -155,7 +158,7 @@ const Posts = ({ data }) => (
   </Wrap>
 );
 
-const Post = ({ title, excerpt, createdAt, featuredImage, slug, tags }) => (
+const Post = ({ title, excerpt, updatedAt, featuredImage, slug, tags }) => (
   <LinkBox as={Flex} flex="40%">
     <VStack className="shadow hover-shadow" p="1rem" spacing="1rem">
       <GatsbyImage image={featuredImage} />
@@ -172,7 +175,7 @@ const Post = ({ title, excerpt, createdAt, featuredImage, slug, tags }) => (
               </Tag>
             ))}
           </HStack>
-          <Text>{createdAt}</Text>
+          <Text>{updatedAt}</Text>
         </HStack>
         <LinkOverlay as={GLink} to={`/blog/${slug}`} />
         <Heading as="h3" size="md">

@@ -31,14 +31,14 @@ const navLinksData = [
 ];
 
 const DesktopLink = ({ text, to }) => (
-  <Link as={GLink} to={to}>
+  <Link as={GLink} to={to} aria-label={text}>
     <Text>{text}</Text>
   </Link>
 );
 
 const DesktopButton = ({ text, to }) => (
   <Link as={GLink} to={to}>
-    <Button colorScheme="blue" rightIcon={<FaPhone />}>
+    <Button colorScheme="blue" rightIcon={<FaPhone />} aria-label={text}>
       {text}
     </Button>
   </Link>
@@ -64,13 +64,13 @@ export const DesktopNavLinks = () => {
 };
 
 const MobileNavLink = ({ text, to }) => (
-  <Flex as={GLink} to={to} p={2} justify="center" bgColor="white">
+  <Flex as={GLink} to={to} p={2} justify="center" bgColor="white" aria-label={text}>
     {text}
   </Flex>
 );
 
 const MobileNavLinkSpecial = ({ text, to }) => (
-  <Button as={GLink} to={to} p={2} justify="center" colorScheme="blue">
+  <Button as={GLink} to={to} p={2} justify="center" colorScheme="blue" aria-label={text}>
     <Text textColor="white">{text}</Text>
   </Button>
 );
@@ -82,6 +82,7 @@ export const MobileMenuIcon = ({ isOpen, onToggle }) => (
     onClick={onToggle}
     icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
     variant="ghost"
+    aria-label="menu"
   />
 );
 

@@ -1,8 +1,27 @@
-import {AiOutlineConsoleSql, AiTwotoneApi} from 'react-icons/ai';
-import {DiGoogleCloudPlatform} from 'react-icons/di'
-import {FiGitMerge} from 'react-icons/fi';
-import { FaCode, FaPython, FaJsSquare, FaShoppingCart, FaCloud, FaDatabase, FaGithub, FaDocker } from 'react-icons/fa';
-import { SiGoogleads, SiGoogleanalytics, SiGoogletagmanager, SiShopify, SiStripe, SiMysql, SiMongodb, SiServerless } from 'react-icons/si';
+import { AiOutlineConsoleSql, AiTwotoneApi } from 'react-icons/ai';
+import { DiGoogleCloudPlatform } from 'react-icons/di';
+import { FiGitMerge } from 'react-icons/fi';
+import {
+  FaCode,
+  FaPython,
+  FaJsSquare,
+  FaFacebook,
+  FaShoppingCart,
+  FaCloud,
+  FaDatabase,
+  FaGithub,
+  FaDocker,
+} from 'react-icons/fa';
+import {
+  SiGoogleads,
+  SiGoogleanalytics,
+  SiGoogletagmanager,
+  SiShopify,
+  SiStripe,
+  SiMysql,
+  SiMongodb,
+  SiServerless,
+} from 'react-icons/si';
 
 const techStacks = [
   {
@@ -53,7 +72,7 @@ const techStacks = [
       },
       {
         name: 'Facebook Ads',
-        icon: SiGoogleads,
+        icon: FaFacebook,
         textColor: 'white',
         bgColor: 'blue.700',
       },
@@ -74,7 +93,7 @@ const techStacks = [
         icon: SiStripe,
         textColor: 'white',
         bgColor: 'purple.500',
-      }
+      },
     ],
   },
   {

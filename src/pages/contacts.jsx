@@ -12,26 +12,25 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Layout from '../components/Layout';
 import SectionLayout from '../components/SectionLayout';
-import socials from '../components/socials';
-
-const query = graphql`
-  query Contacts {
-    file(relativePath: { eq: "images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, aspectRatio: 3)
-      }
-    }
-  }
-`;
+import socials from '../data/socials';
 
 const Contacts = () => {
-  const data = useStaticQuery(query);
+  const data = useStaticQuery(graphql`
+    query Contacts {
+      file(
+        relativePath: { eq: "images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 3)
+        }
+      }
+    }
+  `);
+
   return (
     <Layout title="Contact">
       <SectionLayout heading="Contacts">
-        <GatsbyImage
-          image={data.file.childImageSharp.gatsbyImageData}
-        />
+        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} />
         <Social />
       </SectionLayout>
     </Layout>

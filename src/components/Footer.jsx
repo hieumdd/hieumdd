@@ -8,11 +8,11 @@ import {
   LinkBox,
 } from '@chakra-ui/react';
 
-import socials from './socials';
+import socials from '../data/socials';
 
 const Footer = () => (
   <Flex>
-    <Container className="container">
+    <Container>
       <SocialIcons />
     </Container>
   </Flex>
@@ -30,8 +30,8 @@ const SocialIcons = () => {
   return (
     <HStack
       align="center"
-      py={5}
-      spacing={10}
+      py='2rem'
+      spacing='2rem'
       justify={{ base: 'center', md: 'flex-end' }}
     >
       {socialIcons}
@@ -42,7 +42,7 @@ const SocialIcons = () => {
 const SocialIcon = ({ icon, link }) => (
   <LinkBox className="hover-shadow">
     <LinkOverlay href={link}>
-      <Icon boxSize={6} as={icon} />
+      <Icon fontSize='1.5rem' as={icon} />
     </LinkOverlay>
   </LinkBox>
 );
