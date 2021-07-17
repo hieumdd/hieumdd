@@ -19,8 +19,8 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`],
-          placeholder: `blurred`,
-          quality: 100,
+          placeholder: `dominantColor`,
+          quality: 50,
           breakpoints: [480, 768, 992, 1280, 1536],
           backgroundColor: `transparent`,
           tracedSVGOptions: {},
@@ -103,6 +103,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        devMode: true,
+      },
+    },
   ],
   flags: {
     THE_FLAG: false,
