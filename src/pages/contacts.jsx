@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  SimpleGrid,
+  Wrap,
+  WrapItem,
   HStack,
   Box,
   Icon,
@@ -11,7 +12,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Layout from '../components/Layout';
-import SectionLayout from '../components/SectionLayout';
+import Section from '../components/Section';
 import socials from '../data/socials';
 
 const Contacts = () => {
@@ -21,7 +22,7 @@ const Contacts = () => {
         relativePath: { eq: "images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" }
       ) {
         childImageSharp {
-          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 3)
+          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 2.5)
         }
       }
     }
@@ -29,36 +30,36 @@ const Contacts = () => {
 
   return (
     <Layout title="Contact">
-      <SectionLayout heading="Contacts">
-        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} />
-        <Social />
-      </SectionLayout>
+      <Section heading="Contacts">
+        <GatsbyImage
+          loading="eager"
+          image={data.file.childImageSharp.gatsbyImageData}
+        />
+        <Wrap w="100%" spacing="2rem">
+          {socials.map((socialItem) => (
+            <WrapItem
+              key={socialItem.id}
+              flex={{ base: '1', md: '1 0 calc(50% - 2rem)' }}
+            >
+              <SocialCard
+                key={socialItem.id}
+                icon={socialItem.icon}
+                link={socialItem.link}
+                text={socialItem.text}
+              />
+            </WrapItem>
+          ))}
+        </Wrap>
+      </Section>
     </Layout>
   );
 };
 
-const Social = () => {
-  const socialCards = socials.map((socialItem) => (
-    <SocialCard
-      key={socialItem.id}
-      icon={socialItem.icon}
-      link={socialItem.link}
-      text={socialItem.text}
-    />
-  ));
-
-  return (
-    <SimpleGrid width="100%" columns={{ base: 1, md: 2 }} spacing={5}>
-      {socialCards}
-    </SimpleGrid>
-  );
-};
-
 const SocialCard = ({ icon, link, text }) => (
-  <LinkBox width="100%" className="shadow hover-shadow">
-    <HStack direction="row" p="1rem" justify="flex-start" spacing={5}>
+  <LinkBox w="100%" className="shadow hover-shadow">
+    <HStack p="1rem" justify="flex-start" spacing="1rem">
       <Box>
-        <Icon boxSize={8} as={icon} />
+        <Icon fontSize="1.5rem" as={icon} />
       </Box>
       <LinkOverlay href={link}>{text}</LinkOverlay>
     </HStack>

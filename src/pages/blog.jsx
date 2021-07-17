@@ -16,18 +16,11 @@ import {
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Layout from '../components/Layout';
-import SectionLayout from '../components/SectionLayout';
+import Section from '../components/Section';
 
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query Blog {
-      file(
-        relativePath: { eq: "images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" }
-      ) {
-        childImageSharp {
-          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 3)
-        }
-      }
       allContentfulBlogPost {
         nodes {
           updatedAt(formatString: "MMM D YY")
@@ -60,13 +53,12 @@ const Blog = () => {
 };
 
 const PostsSection = ({ data }) => {
-  const AallContentfulBlogPost = data.allContentfulBlogPost.nodes;
-  const allContentfulBlogPost = [...AallContentfulBlogPost];
+  const allContentfulBlogPost = data.allContentfulBlogPost.nodes;
 
   const All = {
     name: 'All',
-    backgroundColor: 'black',
-    textColor: 'white',
+    backgroundColor: 'white',
+    textColor: 'black',
   };
   const allTags = allContentfulBlogPost
     .map((node) => node.tag)
@@ -108,7 +100,7 @@ const PostsSection = ({ data }) => {
   }, [selectedTag, count, hasMore]);
 
   return (
-    <SectionLayout heading="Blog">
+    <Section heading="Blog">
       <Wrap spacing="1rem" shouldWrapChildren>
         {tags.map((tag) => (
           <Button
@@ -133,7 +125,7 @@ const PostsSection = ({ data }) => {
       >
         Load more
       </Button>
-    </SectionLayout>
+    </Section>
   );
 };
 
@@ -142,7 +134,7 @@ const Posts = ({ data }) => (
     {data.map((node) => (
       <WrapItem
         key={node.id}
-        flex={{ base: '1 0 calc(100% - 2rem)', md: '1 1 calc(50% - 2rem)' }}
+        flex={{ base: '1 0 calc(100% - 2rem)', md: '1 0 calc(50% - 2rem)' }}
       >
         <Post
           key={node.id}

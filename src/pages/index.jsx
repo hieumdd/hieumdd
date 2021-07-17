@@ -14,7 +14,7 @@ import lottie from 'lottie-web';
 import { FaUserCircle, FaStream } from 'react-icons/fa';
 
 import Layout from '../components/Layout';
-import SectionLayout from '../components/SectionLayout';
+import Section from '../components/Section';
 import Specialties from '../components/Specialties';
 import Projects from '../components/Projects';
 
@@ -23,12 +23,12 @@ import hello from '../static/lottie/hello.json';
 const Index = () => (
   <Layout title="Home">
     <HeroSection />
-    <SectionLayout heading="Specialties">
+    <Section heading="Specialties">
       <Specialties />
-    </SectionLayout>
-    <SectionLayout heading="Projects">
+    </Section>
+    <Section heading="Projects">
       <Projects />
-    </SectionLayout>
+    </Section>
   </Layout>
 );
 
@@ -47,15 +47,17 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <Stack
-      align="center"
-      direction={{ base: 'column-reverse', md: 'row' }}
-      justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
-      spacing={['2.5vh', '10vh']}
-    >
-      <CTA />
-      <Box ref={lottieBox} align={{ base: 'center', md: 'flex-start' }} />
-    </Stack>
+    <Section>
+      <Stack
+        align="center"
+        direction={{ base: 'column-reverse', md: 'row' }}
+        justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
+        spacing={['2.5vh', '10vh']}
+      >
+        <CTA />
+        <Box ref={lottieBox} align={{ base: 'center', md: 'flex-start' }} />
+      </Stack>
+    </Section>
   );
 };
 

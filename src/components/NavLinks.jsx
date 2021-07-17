@@ -57,20 +57,34 @@ export const DesktopNavLinks = () => {
   });
 
   return (
-    <HStack display={{ base: 'none', md: 'flex' }} spacing={10}>
+    <HStack display={{ base: 'none', md: 'flex' }} spacing='2.5rem'>
       {navLinks}
     </HStack>
   );
 };
 
 const MobileNavLink = ({ text, to }) => (
-  <Flex as={GLink} to={to} p={2} justify="center" bgColor="white" aria-label={text}>
+  <Flex
+    as={GLink}
+    to={to}
+    p="0.25rem"
+    justify="center"
+    bgColor="white"
+    aria-label={text}
+  >
     {text}
   </Flex>
 );
 
 const MobileNavLinkSpecial = ({ text, to }) => (
-  <Button as={GLink} to={to} p={2} justify="center" colorScheme="blue" aria-label={text}>
+  <Button
+    as={GLink}
+    to={to}
+    p="0.5rem"
+    justify="center"
+    colorScheme="blue"
+    aria-label={text}
+  >
     <Text textColor="white">{text}</Text>
   </Button>
 );
@@ -78,7 +92,7 @@ const MobileNavLinkSpecial = ({ text, to }) => (
 export const MobileMenuIcon = ({ isOpen, onToggle }) => (
   <IconButton
     display={{ base: 'block', md: 'none' }}
-    size="lg"
+    fontSize='1.5rem'
     onClick={onToggle}
     icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
     variant="ghost"
@@ -89,7 +103,7 @@ export const MobileMenuIcon = ({ isOpen, onToggle }) => (
 export const MobileNavLinks = ({ isOpen }) => (
   <Box
     bgColor="white"
-    pb={isOpen ? 4 : 'auto'}
+    pb={isOpen ? '1rem' : 'auto'}
     display={{ base: 'block', md: 'none' }}
   >
     <Collapse in={isOpen} animateOpacity>
