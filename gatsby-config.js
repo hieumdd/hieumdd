@@ -20,8 +20,8 @@ module.exports = {
         defaults: {
           formats: [`auto`, `webp`],
           placeholder: `dominantColor`,
-          quality: 50,
-          breakpoints: [480, 768, 992, 1280, 1536],
+          quality: 80,
+          breakpoints: [768, 992, 1280, 1536],
           backgroundColor: `transparent`,
           tracedSVGOptions: {},
           blurredOptions: {},
@@ -107,6 +107,24 @@ module.exports = {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
         devMode: true,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -100
+      }
+    },
+    {
+      resolve: "gatsby-plugin-page-progress",
+      options: {
+        includePaths: [{ regex: "^/blog/" }],
+        excludePaths: ["/blog"],
+        height: 3,
+        prependToBody: false,
+        color: `#4299e1`,
+        footerHeight: 72,
+        headerHeight: 0,
       },
     },
   ],

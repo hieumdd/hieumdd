@@ -21,7 +21,7 @@ import Section from '../components/Section';
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query Blog {
-      allContentfulBlogPost {
+      allContentfulBlogPost(sort: { fields: updatedAt, order: DESC }) {
         nodes {
           updatedAt(formatString: "MMM D YY")
           featuredImage {
@@ -67,7 +67,7 @@ const PostsSection = ({ data }) => {
   const uniqueTags = [...new Set(allTags)];
   const tags = [All, ...uniqueTags.map((node) => JSON.parse(node))];
 
-  const per = 5;
+  const per = 4;
 
   const [list, setList] = useState([...allContentfulBlogPost.slice(0, per)]);
   const [selectedTag, setTag] = useState(All);
@@ -86,13 +86,15 @@ const PostsSection = ({ data }) => {
     if (selectedTag.name === 'All') {
       setList([...allContentfulBlogPost.slice(0, count)]);
     } else {
-      setList(
-        [...allContentfulBlogPost.slice(0, count)].filter((node) =>
-          node.tag.some((item) =>
-            JSON.stringify(item).includes(JSON.stringify(selectedTag))
+      setList([
+        ...allContentfulBlogPost
+          .filter((node) =>
+            node.tag.some((item) =>
+              JSON.stringify(item).includes(JSON.stringify(selectedTag))
+            )
           )
-        )
-      );
+          .slice(0, count),
+      ]);
     }
     if (count > allContentfulBlogPost.length) {
       setHasMore(false);
@@ -119,6 +121,7 @@ const PostsSection = ({ data }) => {
       </Wrap>
       <Posts data={list} />
       <Button
+        w="100%"
         colorScheme="blue"
         onClick={handleCount}
         display={hasMore ? 'block' : 'none'}
@@ -134,7 +137,7 @@ const Posts = ({ data }) => (
     {data.map((node) => (
       <WrapItem
         key={node.id}
-        flex={{ base: '1 0 calc(100% - 2rem)', md: '1 0 calc(50% - 2rem)' }}
+        flex={{ base: '0 0 calc(100% - 2rem)', md: '0 0 calc(50% - 2rem)' }}
       >
         <Post
           key={node.id}
@@ -151,7 +154,7 @@ const Posts = ({ data }) => (
 );
 
 const Post = ({ title, excerpt, updatedAt, featuredImage, slug, tags }) => (
-  <LinkBox as={Flex} flex="40%">
+  <LinkBox as={Flex}>
     <VStack className="shadow hover-shadow" p="1rem" spacing="1rem">
       <GatsbyImage image={featuredImage} />
       <VStack alignItems="flex-start" spacing="0.75rem">

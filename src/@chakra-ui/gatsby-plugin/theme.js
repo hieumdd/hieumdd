@@ -1,16 +1,9 @@
 import { extendTheme } from '@chakra-ui/react';
 
 export default extendTheme({
-  components: {
-    Container: {
-      baseStyle: {
-        maxW: 'container.lg',
-      },
-    },
-  },
   styles: {
     global: {
-      '*': {
+      '*:not(svg)': {
         borderStyle: 'solid',
         borderRadius: 'lg',
       },
@@ -21,6 +14,18 @@ export default extendTheme({
         _hover: {
           boxShadow: 'lg',
         },
+      },
+    },
+  },
+  components: {
+    Container: {
+      baseStyle: {
+        maxW: 'container.lg',
+      },
+    },
+    Link: {
+      baseStyle: {
+        textDecor: 'underline',
       },
     },
   },

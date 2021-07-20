@@ -34,7 +34,7 @@ const Footer = () => (
 
 const SocialIcon = ({ icon, link }) => (
   <LinkBox className="hover-shadow">
-    <LinkOverlay href={link}>
+    <LinkOverlay href={link} isExternal>
       <Icon fontSize="1.5rem" as={icon} />
     </LinkOverlay>
   </LinkBox>

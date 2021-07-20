@@ -40,11 +40,11 @@ const Projects = () => {
 
   const reposData = allGithubData.nodes[0].data.user.repositories.nodes;
   return (
-    <Wrap spacing="1rem">
+    <Wrap spacing="2rem">
       {reposData.map((repo) => (
         <WrapItem
           key={repo.id}
-          flex={{ base: '1', md: '1 0 calc(50% - 1rem)' }}
+          flex={{ base: '1', md: '1 0 calc(50% - 2rem)' }}
         >
           <Project
             name={repo.name}

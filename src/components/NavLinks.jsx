@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link as GLink } from 'gatsby';
 import {
-  Box,
   Collapse,
   StackDivider,
   IconButton,
@@ -9,90 +8,48 @@ import {
   VStack,
   HStack,
   Button,
-  Text,
-  Link,
+  Icon,
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
-import { FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaStream } from 'react-icons/fa';
 
 const navLinksData = [
   {
-    text: 'About',
-    to: '/about',
-  },
-  {
     text: 'Blog',
     to: '/blog',
+    variant: 'outline',
+    icon: <Icon as={FaStream}/>,
   },
   {
     text: 'Contacts',
     to: '/contacts',
+    variant: 'solid',
+    icon: <Icon as={FaEnvelope}/>,
   },
 ];
 
-const DesktopLink = ({ text, to }) => (
-  <Link as={GLink} to={to} aria-label={text}>
-    <Text>{text}</Text>
-  </Link>
-);
-
-const DesktopButton = ({ text, to }) => (
-  <Link as={GLink} to={to}>
-    <Button colorScheme="blue" rightIcon={<FaPhone />} aria-label={text}>
-      {text}
-    </Button>
-  </Link>
-);
-
-export const DesktopNavLinks = () => {
-  const navLinks = navLinksData.map((navLink, i) => {
-    if (navLinksData.length === i + 1) {
-      return (
-        <DesktopButton key={navLink.text} text={navLink.text} to={navLink.to} />
-      );
-    }
-    return (
-      <DesktopLink key={navLink.text} text={navLink.text} to={navLink.to} />
-    );
-  });
-
-  return (
-    <HStack display={{ base: 'none', md: 'flex' }} spacing='2.5rem'>
-      {navLinks}
-    </HStack>
-  );
-};
-
-const MobileNavLink = ({ text, to }) => (
-  <Flex
-    as={GLink}
-    to={to}
-    p="0.25rem"
-    justify="center"
-    bgColor="white"
-    aria-label={text}
-  >
-    {text}
-  </Flex>
-);
-
-const MobileNavLinkSpecial = ({ text, to }) => (
-  <Button
-    as={GLink}
-    to={to}
-    p="0.5rem"
-    justify="center"
-    colorScheme="blue"
-    aria-label={text}
-  >
-    <Text textColor="white">{text}</Text>
-  </Button>
+export const DesktopNavLinks = () => (
+  <HStack display={{ base: 'none', md: 'flex' }} spacing="2rem">
+    {navLinksData.map((navLink) => (
+      <Button
+        key={navLink.to}
+        as={GLink}
+        to={navLink.to}
+        colorScheme="blue"
+        variant={navLink.variant}
+        rightIcon={navLink.icon}
+        aria-label={navLink.text}
+      >
+        {navLink.text}
+      </Button>
+    ))}
+  </HStack>
 );
 
 export const MobileMenuIcon = ({ isOpen, onToggle }) => (
   <IconButton
     display={{ base: 'block', md: 'none' }}
-    fontSize='1.5rem'
+    fontSize="1.5rem"
     onClick={onToggle}
     icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
     variant="ghost"
@@ -101,36 +58,27 @@ export const MobileMenuIcon = ({ isOpen, onToggle }) => (
 );
 
 export const MobileNavLinks = ({ isOpen }) => (
-  <Box
+  <Flex
     bgColor="white"
-    pb={isOpen ? '1rem' : 'auto'}
+    pb={isOpen ? '0.5rem' : 'auto'}
     display={{ base: 'block', md: 'none' }}
   >
     <Collapse in={isOpen} animateOpacity>
-      <VStack
-        align="flex-end"
-        justify={['center', 'space-between', 'flex-end', 'flex-end']}
-        divider={<StackDivider />}
-      >
-        {navLinksData.map((navLink, i) => {
-          if (navLinksData.length === i + 1) {
-            return (
-              <MobileNavLinkSpecial
-                key={navLink.text}
-                text={navLink.text}
-                to={navLink.to}
-              />
-            );
-          }
-          return (
-            <MobileNavLink
-              key={navLink.text}
-              text={navLink.text}
-              to={navLink.to}
-            />
-          );
-        })}
+      <VStack align="flex-end" divider={<StackDivider />}>
+        {navLinksData.map((navLink) => (
+          <Button
+            key={navLink.to}
+            as={GLink}
+            to={navLink.to}
+            colorScheme="blue"
+            variant={navLink.variant}
+            rightIcon={navLink.icon}
+            aria-label={navLink.text}
+          >
+            {navLink.text}
+          </Button>
+        ))}
       </VStack>
     </Collapse>
-  </Box>
+  </Flex>
 );

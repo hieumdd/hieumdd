@@ -18,9 +18,7 @@ import socials from '../data/socials';
 const Contacts = () => {
   const data = useStaticQuery(graphql`
     query Contacts {
-      file(
-        relativePath: { eq: "images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" }
-      ) {
+      file(relativePath: { eq: "images/contact.jpg" }) {
         childImageSharp {
           gatsbyImageData(layout: CONSTRAINED, aspectRatio: 2.5)
         }
@@ -39,7 +37,7 @@ const Contacts = () => {
           {socials.map((socialItem) => (
             <WrapItem
               key={socialItem.id}
-              flex={{ base: '1', md: '1 0 calc(50% - 2rem)' }}
+              flex={{ base: '1', md: '1' }}
             >
               <SocialCard
                 key={socialItem.id}
