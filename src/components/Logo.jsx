@@ -1,19 +1,12 @@
 import React from 'react';
 import { Link as GLink } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
-import { LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Image, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import Profile from '../static/icons/profile_nord.svg';
 
 const Logo = () => (
   <LinkBox>
     <LinkOverlay as={GLink} to="/">
-      <StaticImage
-        src="../static/icons/profile_nord.svg"
-        alt=""
-        width={40}
-        loading="eager"
-        style={{ borderRadius: '50%' }}
-        layout="fixed"
-      />
+      <Image boxSize='40px' src={Profile} />
     </LinkOverlay>
   </LinkBox>
 );

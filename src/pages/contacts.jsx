@@ -59,7 +59,7 @@ const SocialCard = ({ icon, link, text }) => (
       <Box>
         <Icon fontSize="1.5rem" as={icon} />
       </Box>
-      <LinkOverlay href={link}>{text}</LinkOverlay>
+      <LinkOverlay href={link} isExternal>{text}</LinkOverlay>
     </HStack>
   </LinkBox>
 );

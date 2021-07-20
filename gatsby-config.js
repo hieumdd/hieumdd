@@ -104,22 +104,22 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
       options: {
         devMode: true,
       },
     },
     {
-      resolve: "gatsby-plugin-anchor-links",
+      resolve: 'gatsby-plugin-anchor-links',
       options: {
-        offset: -100
-      }
+        offset: -100,
+      },
     },
     {
-      resolve: "gatsby-plugin-page-progress",
+      resolve: 'gatsby-plugin-page-progress',
       options: {
-        includePaths: [{ regex: "^/blog/" }],
-        excludePaths: ["/blog"],
+        includePaths: [{ regex: '^/blog/' }],
+        excludePaths: [{ regex: '^/blog/$' }],
         height: 3,
         prependToBody: false,
         color: `#4299e1`,
