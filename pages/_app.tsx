@@ -3,10 +3,13 @@ import { ChakraProvider, Container, VStack, Divider } from '@chakra-ui/react';
 
 import theme from '../styles/theme';
 
+import Header from '../components/Header';
+
 const App = ({ Component, pageProps }: AppProps) => (
     <>
         <ChakraProvider theme={theme}>
-            <Container maxW="container.md">
+            <Header />
+            <Container maxW="container.md" pt="10vh">
                 <VStack
                     alignItems={{ base: 'center', md: 'flex-start' }}
                     gap="4em"

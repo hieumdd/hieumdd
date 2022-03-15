@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link as GLink } from 'gatsby';
+
 import {
   Collapse,
   StackDivider,
