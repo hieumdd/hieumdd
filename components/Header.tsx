@@ -18,7 +18,7 @@ import {
     useOutsideClick,
     StackProps,
 } from '@chakra-ui/react';
-import { FaEnvelope, FaStream } from 'react-icons/fa';
+import { FaStream } from 'react-icons/fa';
 import { MdClose, MdMenu } from 'react-icons/md';
 
 import Socials from '../components/Socials';
