@@ -10,8 +10,8 @@ const App = ({ Component, pageProps }: AppProps) => (
     <>
         <ChakraProvider theme={theme}>
             <Header />
-            <Container py="10vh">
-                <VStack alignItems="stretch" spacing="4em" >
+            <Container pt="10vh" pb="5vh">
+                <VStack alignItems="stretch" spacing="4em">
                     <Component {...pageProps} />
                 </VStack>
             </Container>

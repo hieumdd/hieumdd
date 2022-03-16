@@ -1,7 +1,5 @@
-import NextLink from 'next/link';
 import Lottie from 'react-lottie';
-import { FaStream } from 'react-icons/fa';
-import { Stack, Heading, Text, Box, Button } from '@chakra-ui/react';
+import { Stack, Heading, Text, Box } from '@chakra-ui/react';
 
 import animationData from '../public/lottie/hello.json';
 
@@ -34,15 +32,6 @@ const Hero = () => (
                 Welcome to my personal portfolio/blog. This is the place where I
                 teach myself React & all the digital analytics tracking
             </Text>
-            <NextLink href="/blog" passHref>
-                <Button
-                    colorScheme="blue"
-                    variant="outline"
-                    leftIcon={<FaStream />}
-                >
-                    <a>Blogs</a>
-                </Button>
-            </NextLink>
         </Stack>
         <Box>
             <Lottie options={options} />

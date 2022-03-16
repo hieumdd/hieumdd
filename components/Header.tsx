@@ -18,8 +18,10 @@ import {
     useOutsideClick,
     StackProps,
 } from '@chakra-ui/react';
-import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { FaEnvelope, FaStream } from 'react-icons/fa';
+import { MdClose, MdMenu } from 'react-icons/md';
+
+import Socials from '../components/Socials';
 
 type MoblileNavLinksProps = {
     isOpen: boolean;
@@ -28,21 +30,6 @@ type MoblileNavLinksProps = {
 type MobileMenuIconProps = MoblileNavLinksProps & {
     onToggle: () => void;
 };
-
-const navLinks = [
-    {
-        text: 'Blog',
-        to: '/blog',
-        variant: 'outline',
-        icon: FaStream,
-    },
-    {
-        text: 'Contacts',
-        to: '/contacts',
-        variant: 'solid',
-        icon: FaEnvelope,
-    },
-];
 
 const Logo = () => (
     <LinkBox boxSize="40px">
@@ -54,30 +41,32 @@ const Logo = () => (
     </LinkBox>
 );
 
+const BlogButton = () => (
+    <NextLink href="/blog" passHref>
+        <Button
+            colorScheme="blue"
+            variant="outline"
+            rightIcon={<Icon as={FaStream} />}
+            aria-label="Blog"
+        >
+            Blog
+        </Button>
+    </NextLink>
+);
+
 const DesktopNavLinks = ({ display }: StackProps) => (
     <HStack spacing="2rem" display={display}>
-        {navLinks.map((navLink) => (
-            <NextLink key={navLink.to} href={navLink.to} passHref>
-                <Button
-                    colorScheme="blue"
-                    variant={navLink.variant}
-                    rightIcon={<Icon as={navLink.icon} />}
-                    aria-label={navLink.text}
-                >
-                    {navLink.text}
-                </Button>
-            </NextLink>
-        ))}
+        <Socials />
+        <BlogButton />
     </HStack>
 );
 
 const MobileMenuIcon = ({ isOpen, onToggle }: MobileMenuIconProps) => (
     <IconButton
-        display={{ base: 'block', md: 'none' }}
+        display={{ base: 'flex', md: 'none' }}
         fontSize="1.5rem"
         onClick={onToggle}
-        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-        variant="ghost"
+        icon={isOpen ? <MdClose /> : <MdMenu />}
         aria-label="menu"
     />
 );
@@ -90,18 +79,8 @@ export const MobileNavLinks = ({ isOpen }: MoblileNavLinksProps) => (
     >
         <Collapse in={isOpen} animateOpacity>
             <VStack align="flex-end" divider={<StackDivider />}>
-                {navLinks.map((navLink) => (
-                    <NextLink key={navLink.to} href={navLink.to} passHref>
-                        <Button
-                            colorScheme="blue"
-                            variant={navLink.variant}
-                            rightIcon={<Icon as={navLink.icon} />}
-                            aria-label={navLink.text}
-                        >
-                            {navLink.text}
-                        </Button>
-                    </NextLink>
-                ))}
+                <Socials />
+                <BlogButton />
             </VStack>
         </Collapse>
     </Flex>
@@ -146,11 +125,11 @@ const Header = () => {
                     <Flex py={4} borderRadius={0} justify="space-between">
                         <Box
                             boxSize={8}
-                            display={{ base: 'block', md: 'none' }}
+                            display={{ base: 'flex', md: 'none' }}
                         />
                         <Logo />
                         <DesktopNavLinks
-                            display={{ base: 'none', md: 'block' }}
+                            display={{ base: 'none', md: 'flex' }}
                         />
                         <MobileMenuIcon isOpen={isOpen} onToggle={onToggle} />
                     </Flex>
