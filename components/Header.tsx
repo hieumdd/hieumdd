@@ -44,13 +44,12 @@ const navLinks = [
 ];
 
 const Logo = () => (
-    <LinkBox>
+    <LinkBox boxSize="40px">
         <NextLink href="/" passHref>
             <LinkOverlay>
                 <NextImage
                     src="/icons/profile_nord.svg"
-                    width="40"
-                    height="40"
+                    layout="fill"
                     alt=""
                 />
             </LinkOverlay>
@@ -99,7 +98,7 @@ export const MobileNavLinks = ({ isOpen }: MoblileNavLinksProps) => (
                         <Button
                             colorScheme="blue"
                             variant={navLink.variant}
-                            rightIcon={navLink.icon}
+                            rightIcon={<Icon as={navLink.icon} />}
                             aria-label={navLink.text}
                         >
                             {navLink.text}
