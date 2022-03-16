@@ -6,6 +6,7 @@ import {
     WrapItem,
     Text,
     Icon,
+    StackProps,
 } from '@chakra-ui/react';
 
 import { IconType } from 'react-icons';
@@ -28,17 +29,13 @@ import {
 } from 'react-icons/si';
 
 type Tech = {
-    name: string;
+    name?: string;
     icon: IconType;
 };
 
 type TechProps = Tech & {
     textColor: string;
     bgColor: string;
-};
-
-type TechCardProps = TechProps & {
-    flex: string;
 };
 
 type TechStackProps = Partial<Tech> & {
@@ -134,7 +131,7 @@ const TechCard = ({
     name,
     textColor = 'black',
     bgColor = 'white',
-}: TechCardProps) => {
+}: TechProps & StackProps) => {
     return (
         <HStack
             flex={flex}
@@ -147,7 +144,7 @@ const TechCard = ({
             bgColor={bgColor}
         >
             <Icon as={icon} boxSize="1em" />
-            <Text>{name}</Text>
+            {name ? <Text>{name}</Text> : null}
         </HStack>
     );
 };
@@ -156,14 +153,14 @@ const TechRow = ({ icon, name, stack }: TechStackProps) => (
     <Stack
         direction={{ base: 'column', md: 'row' }}
         spacing="2rem"
-        alignItems="flex-start"
+        alignItems={{ base: 'stretch', md: 'flex-start' }}
     >
         <TechCard
             icon={icon}
             name={name}
             textColor="black"
             bgColor="white"
-            flex="0 0 calc(40% - 2em)"
+            flex={{ base: '1 0 100%', md: '0 0 calc(40% - 2em)' }}
         />
         <Wrap spacing="2rem" justify="flex-start">
             {stack.map((tech) => (
@@ -171,7 +168,6 @@ const TechRow = ({ icon, name, stack }: TechStackProps) => (
                     <TechCard
                         key={tech.name}
                         icon={tech.icon}
-                        name={tech.name}
                         textColor={tech.textColor}
                         bgColor={tech.bgColor}
                         flex="1 0"
@@ -183,7 +179,7 @@ const TechRow = ({ icon, name, stack }: TechStackProps) => (
 );
 
 const TechStacks = () => (
-    <VStack w="100%" alignItems="space-between" spacing="2rem">
+    <VStack alignItems="stretch" spacing="2rem">
         {techStack.map((stack) => (
             <TechRow
                 key={stack.name}

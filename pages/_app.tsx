@@ -1,23 +1,21 @@
 import { AppProps } from 'next/app';
-import { ChakraProvider, Container, VStack, Divider } from '@chakra-ui/react';
+import { ChakraProvider, Container, VStack } from '@chakra-ui/react';
 
 import theme from '../styles/theme';
 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const App = ({ Component, pageProps }: AppProps) => (
     <>
         <ChakraProvider theme={theme}>
             <Header />
-            <Container maxW="container.md" pt="10vh">
-                <VStack
-                    alignItems={{ base: 'center', md: 'flex-start' }}
-                    gap="4em"
-                    divider={<Divider />}
-                >
+            <Container py="10vh">
+                <VStack alignItems="stretch" spacing="4em" >
                     <Component {...pageProps} />
                 </VStack>
             </Container>
+            <Footer />
         </ChakraProvider>
     </>
 );

@@ -7,7 +7,7 @@ type SectionProps = {
 };
 
 const Section = ({ heading, children }: SectionProps) => (
-    <Flex direction="column" w="100%" gap="2em">
+    <Flex direction="column" gap="2em">
         {heading ? <Heading as="h3">{heading}</Heading> : undefined}
         {children}
     </Flex>

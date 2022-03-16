@@ -20,7 +20,7 @@ export default extendTheme({
     components: {
         Container: {
             baseStyle: {
-                maxW: 'container.lg',
+                maxW: 'container.md',
             },
         },
         Link: {

@@ -16,6 +16,7 @@ import {
     Icon,
     useDisclosure,
     useOutsideClick,
+    StackProps,
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { FaEnvelope, FaStream } from 'react-icons/fa';
@@ -47,18 +48,14 @@ const Logo = () => (
     <LinkBox boxSize="40px">
         <NextLink href="/" passHref>
             <LinkOverlay>
-                <NextImage
-                    src="/icons/profile_nord.svg"
-                    layout="fill"
-                    alt=""
-                />
+                <NextImage src="/icons/profile_nord.svg" layout="fill" alt="" />
             </LinkOverlay>
         </NextLink>
     </LinkBox>
 );
 
-const DesktopNavLinks = () => (
-    <HStack spacing="2rem">
+const DesktopNavLinks = ({ display }: StackProps) => (
+    <HStack spacing="2rem" display={display}>
         {navLinks.map((navLink) => (
             <NextLink key={navLink.to} href={navLink.to} passHref>
                 <Button
@@ -138,14 +135,13 @@ const Header = () => {
             as="header"
             pos="fixed"
             borderRadius={0}
-            height="7vh"
             width="100%"
             zIndex={999}
             bgColor="white"
             ref={ref}
             className={isScrolled ? 'shadow' : ''}
         >
-            <Container maxW="container.md">
+            <Container>
                 <Flex as="nav" direction="column">
                     <Flex py={4} borderRadius={0} justify="space-between">
                         <Box
@@ -153,7 +149,9 @@ const Header = () => {
                             display={{ base: 'block', md: 'none' }}
                         />
                         <Logo />
-                        <DesktopNavLinks />
+                        <DesktopNavLinks
+                            display={{ base: 'none', md: 'block' }}
+                        />
                         <MobileMenuIcon isOpen={isOpen} onToggle={onToggle} />
                     </Flex>
                     <MobileNavLinks isOpen={isOpen} />
