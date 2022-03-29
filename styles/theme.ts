@@ -5,7 +5,7 @@ export default extendTheme({
         global: {
             '*:not(svg)': {
                 borderStyle: 'solid',
-                borderRadius: 'lg',
+                borderRadius: 'md',
             },
             '.shadow': {
                 boxShadow: 'base',
@@ -15,6 +15,15 @@ export default extendTheme({
                     boxShadow: 'lg',
                 },
             },
+            '.hover-color': {
+                _hover: {
+                    borderColor: 'purple.500',
+                },
+                _groupHover: {
+                    color: 'purple.500',
+                },
+            },
+
         },
     },
     components: {
@@ -23,10 +32,10 @@ export default extendTheme({
                 maxW: 'container.lg',
             },
         },
-        Link: {
-            baseStyle: {
-                textDecor: 'underline',
-            },
-        },
+        // Link: {
+        //     baseStyle: {
+        //         textDecor: 'underline',
+        //     },
+        // },
     },
 });

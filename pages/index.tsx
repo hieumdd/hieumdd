@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import { SectionStack, Section } from '../components/Layout/Section';
 import Hero from '../components/Home/Hero';
-import Capabilities from '../components/Home/Capabilities';
+import Expertise from '../components/Home/Expertise';
 
 const Home: NextPage = () => {
     return (
@@ -10,8 +10,8 @@ const Home: NextPage = () => {
             <Section>
                 <Hero />
             </Section>
-            <Section heading="What I do">
-                <Capabilities />
+            <Section heading="Primary Expertises">
+                <Expertise />
             </Section>
         </SectionStack>
     );

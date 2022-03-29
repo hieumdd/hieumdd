@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Flex, Heading, StackDivider, VStack } from '@chakra-ui/react';
+import { Heading, StackDivider, VStack } from '@chakra-ui/react';
 
 type SectionProps = {
     heading?: string;
@@ -7,14 +7,14 @@ type SectionProps = {
 };
 
 export const Section = ({ heading, children }: SectionProps) => (
-    <Flex direction="column" gap="2em">
-        {heading ? <Heading as="h3">{heading}</Heading> : undefined}
+    <VStack w="100%" align="flex-start" spacing="4em">
+        {heading ? <Heading as="h2">{heading}</Heading> : undefined}
         {children}
-    </Flex>
+    </VStack>
 );
 
 export const SectionStack: FC = ({ children }) => (
-    <VStack spacing="2em" divider={<StackDivider />}>
+    <VStack w="100%" spacing="4em" divider={<StackDivider />}>
         {children}
     </VStack>
 );
