@@ -1,21 +1,26 @@
-import { Flex, Icon, Container, LinkOverlay, LinkBox } from '@chakra-ui/react';
+import {
+    Flex,
+    Container,
+    LinkOverlay,
+    LinkBox,
+    Text,
+    Icon,
+} from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 
+import dayjs from 'dayjs';
+
 const Footer = () => (
-    <Flex as="footer">
-        <Container>
-            <Flex justify={{ base: 'center', md: 'flex-end' }} pb="5vh">
-                <LinkBox>
-                    <LinkOverlay
-                        href="https://github.com/hieumdd/hieumdd.git"
-                        isExternal
-                    >
-                        <Icon fontSize="1.5em" as={FaGithub} display="block" />
-                    </LinkOverlay>
-                </LinkBox>
-            </Flex>
-        </Container>
-    </Flex>
+    <Container as="footer">
+        <Flex justify="space-between" pb="5vh">
+            <Text>&copy; {dayjs().year()} HM</Text>
+            <LinkBox>
+                <LinkOverlay href={process.env.REPO_URL} isExternal>
+                    <Icon fontSize="1.5em" as={FaGithub} display="block" />
+                </LinkOverlay>
+            </LinkBox>
+        </Flex>
+    </Container>
 );
 
 export default Footer;
