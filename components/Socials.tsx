@@ -8,7 +8,6 @@ import {
 } from 'react-icons/fa';
 
 type Social = {
-    id: string;
     icon: IconType;
     link: string;
     text: string;
@@ -16,25 +15,21 @@ type Social = {
 
 const socials: Social[] = [
     {
-        id: 'facebook',
         icon: FaFacebook,
         link: 'https://facebook.com/hieumdd',
         text: '/hieumdd',
     },
     {
-        id: 'linkedin',
         icon: FaLinkedin,
         link: 'https://linkedin.com/hieumdd',
         text: '/hieumdd',
     },
     {
-        id: 'github',
         icon: FaGithub,
         link: 'https://github.com/hieumdd',
         text: '/hieumdd',
     },
     {
-        id: 'email',
         icon: FaRegEnvelope,
         link: 'mailto:hieumdd@gmail.com',
         text: 'hieumdd@gmail.com',
@@ -42,18 +37,22 @@ const socials: Social[] = [
 ];
 
 const Socials = () => (
-    <HStack align="center" spacing="2em">
-        {socials.map((social) => (
-            <LinkBox key={social.id}>
-                <LinkOverlay href={social.link}>
+    <HStack spacing="1em">
+        {socials.map((social, i) => (
+            <LinkBox
+                key={i}
+                className="hover-color"
+                role="group"
+                borderWidth="1px"
+                p="0.5em"
+            >
+                <LinkOverlay href={social.link} isExternal>
                     <IconButton
                         as={social.icon}
-                        // textColor="blue.700"
-                        colorScheme="blue"
+                        className="hover-color"
                         size="xs"
-                        display="block"
-                        variant="link"
-                        aria-label=""
+                        variant="unstyled"
+                        aria-label={social.text}
                     />
                 </LinkOverlay>
             </LinkBox>

@@ -24,14 +24,14 @@ const expertises: ExpertiseProps[] = [
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
         icon: FaCode,
-        tools: ['Google Cloud Platform', 'Python', 'TypeScript', 'Docker'],
+        tools: ['Google Cloud Platform', 'Python', 'TypeScript', 'Docker', 'Github Action'],
     },
     {
-        title: 'Data Analytics',
+        title: 'Data Analytics & Visualisation',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
         icon: FaChartLine,
-        tools: ['BigQuery', 'SQL', 'Data Studio', 'Power BI'],
+        tools: ['BigQuery', 'SQL', 'Data Studio', 'Power BI', 'Custom Visualisation'],
     },
     {
         title: 'Digital Tracking & Analytics',
@@ -63,7 +63,7 @@ const ExpertiseCard = ({ title, description, icon, tools }: ExpertiseProps) => (
             fontSize="1.5em"
             align="flex-start"
             lineHeight="1em"
-            spacing="1em"
+            spacing="0.75em"
         >
             <Icon as={icon} />
             <Text fontWeight="bold">{title}</Text>

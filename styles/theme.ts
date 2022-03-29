@@ -4,8 +4,12 @@ export default extendTheme({
     styles: {
         global: {
             '*:not(svg)': {
+                color: 'gray.800',
                 borderStyle: 'solid',
                 borderRadius: 'md',
+            },
+            body: {
+                backgroundColor: 'gray.50',
             },
             '.shadow': {
                 boxShadow: 'base',
@@ -17,13 +21,12 @@ export default extendTheme({
             },
             '.hover-color': {
                 _hover: {
-                    borderColor: 'purple.500',
+                    borderColor: 'purple.400',
                 },
                 _groupHover: {
-                    color: 'purple.500',
+                    color: 'purple.400',
                 },
             },
-
         },
     },
     components: {

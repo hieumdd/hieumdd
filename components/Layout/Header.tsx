@@ -44,7 +44,7 @@ const Logo = () => (
 const BlogButton = () => (
     <NextLink href="/blog" passHref>
         <Button
-            colorScheme="blue"
+            className="hover-color"
             variant="outline"
             rightIcon={<Icon as={FaStream} />}
             aria-label="Blog"
@@ -55,7 +55,7 @@ const BlogButton = () => (
 );
 
 const DesktopNavLinks = ({ display }: StackProps) => (
-    <HStack spacing="2rem" display={display}>
+    <HStack spacing="1em" display={display}>
         <Socials />
         <BlogButton />
     </HStack>
@@ -73,7 +73,7 @@ const MobileMenuIcon = ({ isOpen, onToggle }: MobileMenuIconProps) => (
 
 export const MobileNavLinks = ({ isOpen }: MoblileNavLinksProps) => (
     <Flex
-        bgColor="white"
+        bgColor="inherit"
         pb={isOpen ? '0.5rem' : 'auto'}
         display={{ base: 'block', md: 'none' }}
     >
@@ -116,7 +116,7 @@ const Header = () => {
             borderRadius={0}
             width="100%"
             zIndex={999}
-            bgColor="white"
+            bgColor="gray.50"
             ref={ref}
             className={isScrolled ? 'shadow' : ''}
         >

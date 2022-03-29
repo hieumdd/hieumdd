@@ -26,26 +26,37 @@ const Hero = () => (
             direction="column"
             align="flex-start"
             textAlign="left"
-            spacing={{ base: "1em", md: "2em" }}
+            spacing={{ base: '1em', md: '2em' }}
             flex="1 0 50%"
         >
-            <Heading as="h1">{`Hey, I'm HM`}</Heading>
+            <Heading as="h1" fontSize="3rem">
+                {`Hey, I'm`}
+                <Heading as="span" color="purple.400" fontSize="3rem">
+                    {' '}
+                    HM
+                </Heading>
+            </Heading>
             <Text>
-                Welcome to my personal portfolio/blog. This is the place where I
-                teach myself React & all the digital analytics tracking
+                Full stack developer - Data people, focused on
+                <Text as="span" color="purple.400" fontWeight="700">
+                    {' '}
+                    Python & Google Cloud Platform.{' '}
+                </Text>
+                This is my personal portfolio, where my self taught front-end
+                skills are practiced.
             </Text>
             <Button
                 as={Link}
+                className="hover-color"
                 href="#"
-                colorScheme="blue"
-                variant="solid"
+                variant="outline"
                 rightIcon={<HiExternalLink />}
                 isExternal
             >
                 Get my CV
             </Button>
         </Stack>
-            
+
         <Box flex="0 0 40%">
             <Lottie options={options} />
         </Box>
