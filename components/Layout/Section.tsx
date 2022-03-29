@@ -7,7 +7,7 @@ type SectionProps = {
 };
 
 export const Section = ({ heading, children }: SectionProps) => (
-    <VStack w="100%" align="flex-start" spacing="4em">
+    <VStack as="section" w="100%" align="flex-start" spacing="4em">
         {heading ? <Heading as="h2">{heading}</Heading> : undefined}
         {children}
     </VStack>

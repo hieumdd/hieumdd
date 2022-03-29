@@ -43,12 +43,12 @@ const Hero = () => (
                     Python & Google Cloud Platform.{' '}
                 </Text>
                 This is my personal portfolio, where my self taught front-end
-                skills are practiced.
+                skills are practised.
             </Text>
             <Button
                 as={Link}
                 className="hover-color"
-                href="#"
+                href={process.env.CV_URL}
                 variant="outline"
                 rightIcon={<HiExternalLink />}
                 isExternal

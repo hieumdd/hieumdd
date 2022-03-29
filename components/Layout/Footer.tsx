@@ -2,7 +2,7 @@ import { Flex, Icon, Container, LinkOverlay, LinkBox } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 
 const Footer = () => (
-    <Flex>
+    <Flex as="footer">
         <Container>
             <Flex justify={{ base: 'center', md: 'flex-end' }} pb="5vh">
                 <LinkBox>
