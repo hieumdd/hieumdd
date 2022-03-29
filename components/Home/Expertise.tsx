@@ -1,4 +1,5 @@
 import {
+    Box,
     VStack,
     HStack,
     Wrap,
@@ -24,14 +25,26 @@ const expertises: ExpertiseProps[] = [
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
         icon: FaCode,
-        tools: ['Google Cloud Platform', 'Python', 'TypeScript', 'Docker', 'Github Action'],
+        tools: [
+            'Google Cloud Platform',
+            'Python',
+            'TypeScript',
+            'Docker',
+            'Github Action',
+        ],
     },
     {
         title: 'Data Analytics & Visualisation',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
         icon: FaChartLine,
-        tools: ['BigQuery', 'SQL', 'Data Studio', 'Power BI', 'Custom Visualisation'],
+        tools: [
+            'BigQuery',
+            'SQL',
+            'Data Studio',
+            'Power BI',
+            'Custom Visualisation',
+        ],
     },
     {
         title: 'Digital Tracking & Analytics',
@@ -62,10 +75,11 @@ const ExpertiseCard = ({ title, description, icon, tools }: ExpertiseProps) => (
             className="hover-color"
             fontSize="1.5em"
             align="flex-start"
-            lineHeight="1em"
             spacing="0.75em"
         >
-            <Icon as={icon} />
+            <Box p={1}>
+                <Icon as={icon} lineHeight="1.5em"/>
+            </Box>
             <Text fontWeight="bold">{title}</Text>
         </HStack>
         <Text>{description}</Text>
@@ -82,7 +96,7 @@ const ExpertiseCard = ({ title, description, icon, tools }: ExpertiseProps) => (
 );
 
 const Expertise = () => (
-    <SimpleGrid columns={2} spacing="2em">
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
         {expertises.map((props, i) => (
             <ExpertiseCard key={i} {...props} />
         ))}

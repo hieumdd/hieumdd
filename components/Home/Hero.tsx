@@ -29,16 +29,16 @@ const Hero = () => (
             spacing={{ base: '1em', md: '2em' }}
             flex="1 0 50%"
         >
-            <Heading as="h1" fontSize="3rem">
+            <Heading as="h1" fontSize="3em">
                 {`Hey, I'm`}
-                <Heading as="span" color="purple.400" fontSize="3rem">
+                <Heading as="span" color="purple.400" fontSize="1em">
                     {' '}
                     HM
                 </Heading>
             </Heading>
             <Text>
-                Full stack developer - Data people, focused on
-                <Text as="span" color="purple.400" fontWeight="700">
+                Full-Stack Developer - Data Engineer, focused on
+                <Text as="span" color="purple.400" fontWeight="bold">
                     {' '}
                     Python & Google Cloud Platform.{' '}
                 </Text>
