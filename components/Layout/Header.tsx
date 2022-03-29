@@ -46,10 +46,11 @@ const BlogButton = () => (
         <Button
             className="hover-color"
             variant="outline"
+            borderWidth="2px"
             rightIcon={<Icon as={FaStream} />}
             aria-label="Blog"
         >
-            Blog
+            Articles
         </Button>
     </NextLink>
 );

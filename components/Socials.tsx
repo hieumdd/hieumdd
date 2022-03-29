@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { HStack, IconButton, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import {
@@ -8,29 +9,29 @@ import {
 } from 'react-icons/fa';
 
 type Social = {
-    icon: IconType;
+    icon: ReactElement;
     link: string;
     text: string;
 };
 
 const socials: Social[] = [
     {
-        icon: FaFacebook,
+        icon: <FaFacebook fontSize="20px"/>,
         link: 'https://facebook.com/hieumdd',
         text: '/hieumdd',
     },
     {
-        icon: FaLinkedin,
+        icon: <FaLinkedin fontSize="20px"/>,
         link: 'https://linkedin.com/hieumdd',
         text: '/hieumdd',
     },
     {
-        icon: FaGithub,
+        icon: <FaGithub fontSize="20px"/>,
         link: 'https://github.com/hieumdd',
         text: '/hieumdd',
     },
     {
-        icon: FaRegEnvelope,
+        icon: <FaRegEnvelope fontSize="20px"/>,
         link: 'mailto:hieumdd@gmail.com',
         text: 'hieumdd@gmail.com',
     },
@@ -43,12 +44,13 @@ const Socials = () => (
                 key={i}
                 className="hover-color"
                 role="group"
-                borderWidth="1px"
+                borderWidth="2px"
                 p="0.5em"
             >
                 <LinkOverlay href={social.link} isExternal>
                     <IconButton
-                        as={social.icon}
+                        as="a"
+                        icon={social.icon}
                         className="hover-color"
                         size="xs"
                         variant="unstyled"
