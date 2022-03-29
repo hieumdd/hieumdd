@@ -21,7 +21,7 @@ import {
 import { FaStream } from 'react-icons/fa';
 import { MdClose, MdMenu } from 'react-icons/md';
 
-import Socials from '../components/Socials';
+import Socials from '../Socials';
 
 type MoblileNavLinksProps = {
     isOpen: boolean;

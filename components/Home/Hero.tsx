@@ -1,7 +1,9 @@
 import Lottie from 'react-lottie';
-import { Stack, Heading, Text, Box } from '@chakra-ui/react';
+import { Stack, Heading, Text, Box, Button, Link } from '@chakra-ui/react';
 
-import animationData from '../public/lottie/hello.json';
+import { HiExternalLink } from 'react-icons/hi';
+
+import animationData from '../../public/lottie/hello.json';
 
 const options = {
     animationData,
@@ -16,8 +18,7 @@ const Hero = () => (
         direction={{ base: 'column-reverse', md: 'row' }}
         justify={{
             base: 'center',
-            md: 'space-around',
-            xl: 'space-between',
+            md: 'space-between',
         }}
         spacing="4em"
     >
@@ -25,15 +26,27 @@ const Hero = () => (
             direction="column"
             align="flex-start"
             textAlign="left"
-            spacing={{ base: 5, md: 10 }}
+            spacing={{ base: "1em", md: "2em" }}
+            flex="1 0 50%"
         >
-            <Heading as="h2">{`Hey, I'm HM`}</Heading>
+            <Heading as="h1">{`Hey, I'm HM`}</Heading>
             <Text>
                 Welcome to my personal portfolio/blog. This is the place where I
                 teach myself React & all the digital analytics tracking
             </Text>
+            <Button
+                as={Link}
+                href="#"
+                colorScheme="blue"
+                variant="solid"
+                rightIcon={<HiExternalLink />}
+                isExternal
+            >
+                Get my CV
+            </Button>
         </Stack>
-        <Box>
+            
+        <Box flex="0 0 40%">
             <Lottie options={options} />
         </Box>
     </Stack>

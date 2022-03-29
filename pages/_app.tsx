@@ -1,15 +1,14 @@
 import { AppProps } from 'next/app';
-import { ChakraProvider, Container, VStack } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import { DefaultSeo } from 'next-seo';
 
 import theme from '../styles/theme';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/Layout';
 
 const App = ({ Component, pageProps }: AppProps) => {
-    console.log(pageProps);
+    console.log(Component);
     return (
         <>
             <DefaultSeo
@@ -24,13 +23,9 @@ const App = ({ Component, pageProps }: AppProps) => {
                 ]}
             />
             <ChakraProvider theme={theme}>
-                <Header />
-                <Container pt="10vh" pb="5vh">
-                    <VStack alignItems="stretch" spacing="4em">
-                        <Component {...pageProps} />
-                    </VStack>
-                </Container>
-                <Footer />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             </ChakraProvider>
         </>
     );
