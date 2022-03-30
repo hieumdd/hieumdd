@@ -1,8 +1,23 @@
-import { FC } from 'react';
 import NextLink from 'next/link';
-import { Box, Code, Heading, Link, Text, Divider } from '@chakra-ui/react';
+import {
+    Box,
+    Heading,
+    OrderedList,
+    UnorderedList,
+    ListItem,
+    Text,
+    Link,
+    Code,
+    Divider,
+} from '@chakra-ui/react';
 
-const CustomLink: FC<{ href: string }> = ({ href }) => {
+type MDXComponent = (props: any) => JSX.Element;
+
+type MDXComponents = {
+    [key: string]: MDXComponent;
+};
+
+const CustomLink: MDXComponent = ({ href }) => {
     const isInternalLink =
         href && (href.startsWith('/') || href.startsWith('#'));
 
@@ -19,20 +34,17 @@ const CustomLink: FC<{ href: string }> = ({ href }) => {
 
 const Hr = () => <Divider w="100%" />;
 
-const MDXComponents = {
-    h1: (props: any) => <Heading as="h1" size="xl" {...props} />,
-    h2: (props: any) => (
-        <Heading as="h2" size="lg" fontWeight="bold" {...props} />
-    ),
-    h3: (props: any) => (
-        <Heading as="h3" size="md" fontWeight="bold" {...props} />
-    ),
+const components: MDXComponents = {
+    h2: (props) => <Heading as="h2" size="lg" {...props} />,
+    h3: (props) => <Heading as="h3" size="md" {...props} />,
     a: CustomLink,
-    p: (props: any) => <Text as="p" mt={0} lineHeight="tall" {...props} />,
-    ul: (props: any) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
-    ol: (props: any) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
-    li: (props: any) => <Box as="li" pb={1} {...props} />,
+    p: (props) => <Text {...props} />,
+    ul: (props) => <UnorderedList {...props} />,
+    ol: (props) => <OrderedList {...props} />,
+    li: (props) => <ListItem ml="1em" {...props} />,
+    pre: (props) => <Box as="pre" whiteSpace="pre-wrap" {...props} />,
+    code: (props) => <Code {...props} />,
 };
 
 export { CustomLink };
-export default MDXComponents;
+export default components;

@@ -50,7 +50,7 @@ const ArticleCard: FC<MDXFile> = ({ frontMatter }) => {
 };
 
 const ArticlesListing: FC<{ articles: MDXFile[] }> = ({ articles }) => (
-    <SimpleGrid columns={2} spacing="2em">
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
         {articles.map((article, i) => (
             <ArticleCard key={i} {...article} />
         ))}

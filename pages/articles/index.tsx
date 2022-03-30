@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
 
-import { SectionStack, Section } from '../components/Layout/Section';
-import ArticlesListing from '../components/Articles';
+import { SectionStack, Section } from '../../components/Layout/Section';
+import ArticlesListing from '../../components/Articles';
 
-import { getAllFilesFrontMatter } from '../lib/mdx';
-import { MDXFile } from '../lib/mdx';
+import { getAllFilesFrontMatter } from '../../lib/mdx';
+import { MDXFile } from '../../lib/mdx';
 
 type ArticleProps = { articles: MDXFile[] };
 
@@ -16,10 +16,11 @@ const Articles: NextPage<ArticleProps> = ({ articles }) => (
     </SectionStack>
 );
 
-export const getStaticProps = () => ({
+export const getStaticProps = async () => ({
     props: {
+        layout: 'home',
         title: 'Articles',
-        articles: getAllFilesFrontMatter('articles'),
+        articles: await getAllFilesFrontMatter('articles'),
     },
 });
 

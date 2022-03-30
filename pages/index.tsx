@@ -17,6 +17,7 @@ const Home: NextPage = () => (
 
 export const getStaticProps = async () => ({
     props: {
+        layout: 'home',
         title: 'Home',
     },
 });

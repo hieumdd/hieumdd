@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import readingTime, { ReadTimeResults } from 'reading-time';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
 
 type FrontMatter = {
     title: string;
@@ -11,7 +13,7 @@ type FrontMatter = {
 };
 
 export type MDXFile = {
-    content: string;
+    content: MDXRemoteSerializeResult;
     frontMatter: FrontMatter & {
         slug: string;
         path: string;
@@ -25,15 +27,20 @@ const dataDir = 'data';
 export const getFiles = (type: string) =>
     fs.readdirSync(path.join(root, dataDir, type));
 
-export const getFileFrontMatter = (type: string, slug: string): MDXFile => {
+export const getFileFrontMatter = async (
+    type: string,
+    slug: string,
+): Promise<MDXFile> => {
     const source =
         slug &&
         fs.readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
 
     const {
         data: { title, updatedAt, summary, tags },
-        content,
+        content: _content,
     } = matter(source);
+
+    const content = await serialize(_content);
 
     return {
         content,
@@ -43,13 +50,17 @@ export const getFileFrontMatter = (type: string, slug: string): MDXFile => {
             updatedAt,
             summary,
             tags,
-            readingTime: readingTime(content),
+            readingTime: readingTime(_content),
             path: path.join('/', type, slug),
         },
     };
 };
 
-export const getAllFilesFrontMatter = (type: string): MDXFile[] =>
-    getFiles(type)
+export const getAllFilesFrontMatter = async (
+    type: string,
+): Promise<MDXFile[]> => {
+    const files = getFiles(type)
         .map((slug) => slug.replace(/.mdx/, ''))
         .map((slug) => getFileFrontMatter(type, slug));
+    return Promise.all(files);
+};
