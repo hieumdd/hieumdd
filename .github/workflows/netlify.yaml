@@ -10,13 +10,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Setup node.js
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
+          cache: 'npm'
 
       - run: npm install
 
@@ -29,7 +28,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: 39409463-1852-451e-851b-9c961d788f2b
         with:
-          args: deploy --dir=build --alias=dev
+          args: deploy --dir=.next --alias=dev
 
       - name: Deploy to netlify (master)
         if: github.ref_name == 'master'
@@ -38,4 +37,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: 39409463-1852-451e-851b-9c961d788f2b
         with:
-          args: deploy --dir=build --prod
+          args: deploy --dir=.next --prod
