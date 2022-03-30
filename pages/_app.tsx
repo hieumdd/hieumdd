@@ -11,7 +11,7 @@ import theme from '../styles/theme';
 import layouts, { Layout } from '../components/Layout';
 
 const App = ({ Component, pageProps }: AppProps) => {
-    const Layout = layouts[pageProps.layout as keyof Layout];
+    const Layout = layouts[pageProps.layout as keyof Layout] || layouts.home;
     return (
         <>
             <DefaultSeo

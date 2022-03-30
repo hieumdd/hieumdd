@@ -21,8 +21,9 @@ const NotFound = () => (
     </Section>
 );
 
-export const getStaticProps = async () => ({
+export const getStaticProps = () => ({
     props: {
+        layout: 'home',
         title: '404',
     },
 });
