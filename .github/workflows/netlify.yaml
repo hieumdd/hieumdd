@@ -1,0 +1,41 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
+
+      - run: npm install
+
+      - run: npm run build --if-present
+
+      - name: Deploy to netlify (dev)
+        if: github.ref_name == 'dev'
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: 39409463-1852-451e-851b-9c961d788f2b
+        with:
+          args: deploy --dir=build --alias=dev
+
+      - name: Deploy to netlify (master)
+        if: github.ref_name == 'master'
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: 39409463-1852-451e-851b-9c961d788f2b
+        with:
+          args: deploy --dir=build --prod
