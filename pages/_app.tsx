@@ -1,5 +1,7 @@
 import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
+import "@fontsource/comfortaa"
+import '@fontsource/comfortaa/variable.css';
 
 import { DefaultSeo } from 'next-seo';
 

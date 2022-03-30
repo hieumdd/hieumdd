@@ -47,7 +47,8 @@ const BlogButton = () => (
             className="hover-color"
             variant="outline"
             borderWidth="2px"
-            rightIcon={<Icon as={FaStream} />}
+            rightIcon={<Icon as={FaStream} fontSize="md"/>}
+            lineHeight="1em"
             aria-label="Blog"
         >
             Articles

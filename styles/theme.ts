@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react';
 
 export default extendTheme({
+    fonts: {
+        heading: "Comfortaa, sans-serif",
+        body: "Comfortaa, sans-serif",
+    },
     styles: {
         global: {
             '*:not(svg)': {
