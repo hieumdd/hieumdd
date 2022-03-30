@@ -1,5 +1,13 @@
 import Lottie from 'react-lottie';
-import { Stack, Heading, Text, Box, Button, Link } from '@chakra-ui/react';
+import {
+    chakra,
+    Stack,
+    Heading,
+    Text,
+    Box,
+    Button,
+    Link,
+} from '@chakra-ui/react';
 
 import { HiExternalLink } from 'react-icons/hi';
 
@@ -37,11 +45,15 @@ const Hero = () => (
                 </Heading>
             </Heading>
             <Text>
-                Full-Stack Developer - Data Engineer, focused on
-                <Text as="span" color="purple.400" fontWeight="bold">
-                    {' '}
-                    Python & Google Cloud Platform.{' '}
-                </Text>
+                Full-Stack Developer - Data Engineer, focused on{'  '}
+                <chakra.span
+                    as={Link}
+                    color="purple.400"
+                    fontWeight="bold"
+                    href={process.env.REPO_URL}
+                >
+                    Python & Google Cloud Platform.
+                </chakra.span>{' '}
                 This is my personal portfolio, where my self taught front-end
                 skills are practised.
             </Text>
@@ -49,6 +61,7 @@ const Hero = () => (
                 as={Link}
                 className="hover-color"
                 href={process.env.CV_URL}
+                borderWidth="2px"
                 variant="outline"
                 rightIcon={<HiExternalLink />}
                 isExternal

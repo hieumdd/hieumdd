@@ -72,7 +72,6 @@ const ExpertiseCard = ({ title, description, icon, tools }: ExpertiseProps) => (
         role="group"
     >
         <HStack
-            className="hover-color"
             fontSize="1.5em"
             align="flex-start"
             spacing="0.75em"
@@ -86,7 +85,7 @@ const ExpertiseCard = ({ title, description, icon, tools }: ExpertiseProps) => (
         <Wrap>
             {tools.map((tool, i) => (
                 <WrapItem key={i}>
-                    <Tag className="hover-color" variant="outline">
+                    <Tag variant="outline">
                         {tool}
                     </Tag>
                 </WrapItem>
