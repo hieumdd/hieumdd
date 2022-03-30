@@ -42,7 +42,7 @@ const Logo = () => (
 );
 
 const BlogButton = () => (
-    <NextLink href="/blog" passHref>
+    <NextLink href="/articles" passHref>
         <Button
             className="hover-color"
             variant="outline"
