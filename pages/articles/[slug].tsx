@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { VStack } from '@chakra-ui/react';
 import { MDXRemote } from 'next-mdx-remote';
 
-import components from '../../components/Articles/MDXComponents';
+import components from '../../components/Articles/mdxComponents';
 import { MDXFile, getFiles, getFileFrontMatter } from '../../lib/mdx';
 
 type ArticleMeta = {

@@ -13,10 +13,13 @@ import {
     Heading,
 } from '@chakra-ui/react';
 
+import Image from '../@chakra/Image';
 import { MDXFile } from '../../lib/mdx';
 
 const ArticleCard: FC<MDXFile> = ({ frontMatter }) => {
-    const { path, title, updatedAt, summary, tags, readingTime } = frontMatter;
+    const { path, title, cover, updatedAt, summary, tags, readingTime } =
+        frontMatter;
+    console.log(frontMatter);
     return (
         <LinkBox as="article">
             <NextLink href={path} passHref>
@@ -26,11 +29,13 @@ const ArticleCard: FC<MDXFile> = ({ frontMatter }) => {
                         borderWidth="1px"
                         p="1em"
                         align="flex-start"
+                        alignItems="stretch"
                     >
-                        <Flex w="100%" justify="space-between">
+                        <Flex justify="space-between">
                             <Text>{updatedAt}</Text>
                             <Text>{Math.round(readingTime.minutes)} mins</Text>
                         </Flex>
+                        <Image src={cover} alt="title" ratio={2 / 1} />
                         <Heading as="h2" size="md">
                             {title}
                         </Heading>

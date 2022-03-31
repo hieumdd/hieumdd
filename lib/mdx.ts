@@ -7,6 +7,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 
 type FrontMatter = {
     title: string;
+    cover: string;
     updatedAt: string;
     summary: string;
     tags: string[];
@@ -36,7 +37,7 @@ export const getFileFrontMatter = async (
         fs.readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
 
     const {
-        data: { title, updatedAt, summary, tags },
+        data: { title, cover, updatedAt, summary, tags },
         content: _content,
     } = matter(source);
 
@@ -47,6 +48,7 @@ export const getFileFrontMatter = async (
         frontMatter: {
             slug,
             title,
+            cover,
             updatedAt,
             summary,
             tags,
