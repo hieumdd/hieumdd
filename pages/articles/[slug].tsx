@@ -8,6 +8,7 @@ import Image from '../../components/@chakra/Image';
 import Time from '../../components/Articles/Time';
 import Tags from '../../components/Articles/Tags';
 import Breadcrumb from '../../components/Articles/Breadcrumb';
+import Comment from '../../components/Articles/Comment';
 
 type ArticleMeta = {
     params: {
@@ -15,7 +16,7 @@ type ArticleMeta = {
     };
 };
 
-const Articles: NextPage<{ mdx: MDXFile }> = ({ mdx }) => {
+const Article: NextPage<{ mdx: MDXFile }> = ({ mdx }) => {
     const { content, frontMatter } = mdx;
     const { path, title, cover, summary } = frontMatter;
     return (
@@ -28,6 +29,8 @@ const Articles: NextPage<{ mdx: MDXFile }> = ({ mdx }) => {
             <Text as="em">{summary}</Text>
             <Divider />
             <MDXRemote components={components} {...content} />
+            <Divider />
+            <Comment />
         </VStack>
     );
 };
@@ -52,4 +55,4 @@ export const getStaticProps = async ({ params }: ArticleMeta) => {
     };
 };
 
-export default Articles;
+export default Article;
