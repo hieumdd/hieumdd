@@ -9,8 +9,6 @@ const Image = ({ src, alt, ratio, ...rest }: Props) => (
             <NextImage
                 objectFit="cover"
                 layout="fill"
-                width="100%"
-                height="100%"
                 src={src}
                 alt={alt}
             />

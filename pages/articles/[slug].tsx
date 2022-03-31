@@ -46,6 +46,7 @@ export const getStaticProps = async ({ params }: ArticleMeta) => {
     return {
         props: {
             layout: 'articles',
+            title: mdx.frontMatter.title,
             mdx,
         },
     };

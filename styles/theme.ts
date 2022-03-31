@@ -39,10 +39,10 @@ export default extendTheme({
                 maxW: 'container.lg',
             },
         },
-        // Link: {
-        //     baseStyle: {
-        //         textDecor: 'underline',
-        //     },
-        // },
+        Link: {
+            baseStyle: {
+                textDecor: 'underline',
+            },
+        },
     },
 });
