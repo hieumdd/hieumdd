@@ -9,6 +9,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: 39409463-1852-451e-851b-9c961d788f2b
     steps:
       - uses: actions/checkout@v2
 
@@ -33,17 +36,11 @@ jobs:
       - name: Deploy to netlify (dev)
         if: github.ref_name == 'dev'
         uses: netlify/actions/cli@master
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: 39409463-1852-451e-851b-9c961d788f2b
         with:
           args: deploy --dir=.next --alias=dev
 
       - name: Deploy to netlify (master)
         if: github.ref_name == 'master'
         uses: netlify/actions/cli@master
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: 39409463-1852-451e-851b-9c961d788f2b
         with:
           args: deploy --dir=.next --prod
