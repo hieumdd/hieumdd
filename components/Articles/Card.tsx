@@ -10,15 +10,15 @@ import { MDXFile } from '../../lib/mdx';
 const Card: FC<MDXFile> = ({ frontMatter }) => {
     const { path, title, cover, summary } = frontMatter;
     return (
-        <LinkBox as="article">
+        <LinkBox className="hover-color" as="article" borderWidth="2px">
             <NextLink href={path} passHref>
                 <LinkOverlay>
                     <VStack
                         spacing="1em"
-                        borderWidth="1px"
                         p="1em"
                         align="flex-start"
                         alignItems="stretch"
+                        role="group"
                     >
                         <Time {...frontMatter} />
                         <Image src={cover} alt="title" ratio={2 / 1} />
