@@ -1,20 +1,13 @@
 import { FC } from 'react';
 import NextLink from 'next/link';
-import {
-    VStack,
-    SimpleGrid,
-    LinkBox,
-    LinkOverlay,
-    Text,
-    Heading,
-} from '@chakra-ui/react';
+import { VStack, LinkBox, LinkOverlay, Text, Heading } from '@chakra-ui/react';
 
 import Image from '../@chakra/Image';
 import Time from './Time';
 import Tags from './Tags';
 import { MDXFile } from '../../lib/mdx';
 
-const ArticleCard: FC<MDXFile> = ({ frontMatter }) => {
+const Card: FC<MDXFile> = ({ frontMatter }) => {
     const { path, title, cover, summary } = frontMatter;
     return (
         <LinkBox as="article">
@@ -41,12 +34,4 @@ const ArticleCard: FC<MDXFile> = ({ frontMatter }) => {
     );
 };
 
-const ArticlesListing: FC<{ articles: MDXFile[] }> = ({ articles }) => (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
-        {articles.map((article, i) => (
-            <ArticleCard key={i} {...article} />
-        ))}
-    </SimpleGrid>
-);
-
-export default ArticlesListing;
+export default Card;

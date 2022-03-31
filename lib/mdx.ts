@@ -26,7 +26,9 @@ const root = process.cwd();
 const dataDir = 'data';
 
 export const getFiles = (type: string) =>
-    fs.readdirSync(path.join(root, dataDir, type));
+    fs
+        .readdirSync(path.join(root, dataDir, type))
+        .map((f) => f.replace(/\\/g, '/'));
 
 export const getFileFrontMatter = async (
     type: string,
@@ -34,7 +36,8 @@ export const getFileFrontMatter = async (
 ): Promise<MDXFile> => {
     const source =
         slug &&
-        fs.readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
+        fs
+            .readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
 
     const {
         data: { title, cover, updatedAt, summary, tags },
@@ -53,7 +56,7 @@ export const getFileFrontMatter = async (
             summary,
             tags,
             readingTime: readingTime(_content),
-            path: path.join('/', type, slug),
+            path: path.join('/', type, slug).replace(/\\/g, '/'),
         },
     };
 };
