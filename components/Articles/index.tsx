@@ -1,25 +1,21 @@
 import { FC } from 'react';
 import NextLink from 'next/link';
 import {
-    Flex,
     VStack,
-    Wrap,
-    WrapItem,
     SimpleGrid,
     LinkBox,
     LinkOverlay,
     Text,
-    Tag,
     Heading,
 } from '@chakra-ui/react';
 
 import Image from '../@chakra/Image';
+import Time from './Time';
+import Tags from './Tags';
 import { MDXFile } from '../../lib/mdx';
 
 const ArticleCard: FC<MDXFile> = ({ frontMatter }) => {
-    const { path, title, cover, updatedAt, summary, tags, readingTime } =
-        frontMatter;
-    console.log(frontMatter);
+    const { path, title, cover, summary } = frontMatter;
     return (
         <LinkBox as="article">
             <NextLink href={path} passHref>
@@ -31,22 +27,13 @@ const ArticleCard: FC<MDXFile> = ({ frontMatter }) => {
                         align="flex-start"
                         alignItems="stretch"
                     >
-                        <Flex justify="space-between">
-                            <Text>{updatedAt}</Text>
-                            <Text>{Math.round(readingTime.minutes)} mins</Text>
-                        </Flex>
+                        <Time {...frontMatter} />
                         <Image src={cover} alt="title" ratio={2 / 1} />
                         <Heading as="h2" size="md">
                             {title}
                         </Heading>
                         <Text>{summary}</Text>
-                        <Wrap>
-                            {tags.map((tag, i) => (
-                                <WrapItem key={i}>
-                                    <Tag>{tag}</Tag>
-                                </WrapItem>
-                            ))}
-                        </Wrap>
+                        <Tags {...frontMatter} />
                     </VStack>
                 </LinkOverlay>
             </NextLink>

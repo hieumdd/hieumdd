@@ -1,9 +1,13 @@
 import { NextPage } from 'next';
-import { VStack } from '@chakra-ui/react';
+import { VStack, Text, Heading, Divider } from '@chakra-ui/react';
 import { MDXRemote } from 'next-mdx-remote';
 
-import components from '../../components/Articles/mdxComponents';
 import { MDXFile, getFiles, getFileFrontMatter } from '../../lib/mdx';
+import components from '../../components/Articles/mdxComponents';
+import Image from '../../components/@chakra/Image';
+import Time from '../../components/Articles/Time';
+import Tags from '../../components/Articles/Tags';
+import Breadcrumb from '../../components/Articles/Breadcrumb';
 
 type ArticleMeta = {
     params: {
@@ -13,9 +17,16 @@ type ArticleMeta = {
 
 const Articles: NextPage<{ mdx: MDXFile }> = ({ mdx }) => {
     const { content, frontMatter } = mdx;
-    // console.log(content)
+    const { path, title, cover, summary } = frontMatter;
     return (
-        <VStack spacing="1em" align="flex-start">
+        <VStack spacing="1em" align="flex-start" alignItems="stretch">
+            <Breadcrumb href={path} title={title} />
+            <Image src={cover} alt="title" ratio={21 / 9} />
+            <Heading as="h1">{title}</Heading>
+            <Time {...frontMatter} />
+            <Tags {...frontMatter} />
+            <Text as="em">{summary}</Text>
+            <Divider />
             <MDXRemote components={components} {...content} />
         </VStack>
     );

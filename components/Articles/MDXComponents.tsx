@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import {
-    Box,
+    Flex,
     Heading,
     OrderedList,
     UnorderedList,
@@ -42,8 +42,10 @@ const components: MDXComponents = {
     ul: (props) => <UnorderedList {...props} />,
     ol: (props) => <OrderedList {...props} />,
     li: (props) => <ListItem ml="1em" {...props} />,
-    pre: (props) => <Box as="pre" whiteSpace="pre-wrap" {...props} />,
-    code: (props) => <Code {...props} />,
+    pre: (props) => (
+        <Flex as="pre" whiteSpace="pre-wrap" alignItems="stretch" {...props} />
+    ),
+    code: (props) => <Code flex flexGrow={1} {...props} />,
 };
 
 export { CustomLink };
