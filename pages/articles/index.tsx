@@ -20,9 +20,7 @@ export const getStaticProps = async () => ({
     props: {
         layout: 'home',
         title: 'Articles',
-        articles: Array(25)
-            .fill(await getAllFilesFrontMatter('articles'))
-            .reduce((acc, cur) => [...acc, ...cur], []),
+        articles: await getAllFilesFrontMatter('articles'),
     },
 });
 

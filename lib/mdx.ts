@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import readingTime, { ReadTimeResults } from 'reading-time';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import dayjs from 'dayjs';
 
 type FrontMatter = {
     title: string;
@@ -36,8 +37,7 @@ export const getFileFrontMatter = async (
 ): Promise<MDXFile> => {
     const source =
         slug &&
-        fs
-            .readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
+        fs.readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
 
     const {
         data: { title, cover, updatedAt, summary, tags },
@@ -64,8 +64,21 @@ export const getFileFrontMatter = async (
 export const getAllFilesFrontMatter = async (
     type: string,
 ): Promise<MDXFile[]> => {
-    const files = getFiles(type)
-        .map((slug) => slug.replace(/.mdx/, ''))
-        .map((slug) => getFileFrontMatter(type, slug));
-    return Promise.all(files);
+    const files = await Promise.all(
+        getFiles(type)
+            .map((slug) => slug.replace(/.mdx/, ''))
+            .map((slug) => getFileFrontMatter(type, slug)),
+    ).then((file) =>
+        file.sort((a, b) =>
+            dayjs(a.frontMatter.updatedAt).isAfter(
+                dayjs(b.frontMatter.updatedAt),
+            )
+                ? 1
+                : -1,
+        ),
+    );
+
+    return Array(25)
+        .fill(files)
+        .reduce((acc, cur) => [...acc, ...cur], []);
 };
