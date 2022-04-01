@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import { HStack, IconButton, LinkBox, LinkOverlay } from '@chakra-ui/react';
-import { IconType } from 'react-icons';
 import {
     FaFacebook,
     FaLinkedin,

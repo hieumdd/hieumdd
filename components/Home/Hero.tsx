@@ -65,8 +65,12 @@ const Hero = () => (
                 href={process.env.CV_URL}
                 borderWidth="2px"
                 variant="outline"
-                rightIcon={<Icon as={HiExternalLink} fontSize="1.2em"/>}
+                rightIcon={<Icon as={HiExternalLink} fontSize="1.2em" />}
                 lineHeight="1em"
+                textDecor="none"
+                _hover={{
+                    textDecor: 'none',
+                }}
                 isExternal
             >
                 Get my CV
