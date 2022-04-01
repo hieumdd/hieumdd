@@ -3,6 +3,7 @@ import {
     chakra,
     Stack,
     Heading,
+    Icon,
     Text,
     Box,
     Button,
@@ -64,7 +65,8 @@ const Hero = () => (
                 href={process.env.CV_URL}
                 borderWidth="2px"
                 variant="outline"
-                rightIcon={<HiExternalLink />}
+                rightIcon={<Icon as={HiExternalLink} fontSize="1.2em"/>}
+                lineHeight="1em"
                 isExternal
             >
                 Get my CV
