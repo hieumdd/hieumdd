@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Fade } from '@chakra-ui/react';
 
-const Transition: FC<{ tKey: string }> = ({ tKey, children }) => (
-    <Fade key={tKey} in={true}>
+const Transition: FC<{ route: string }> = ({ route, children }) => (
+    <Fade key={route} in={true}>
         {children}
     </Fade>
 );

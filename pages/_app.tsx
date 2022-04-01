@@ -40,7 +40,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
             />
             <ChakraProvider theme={theme}>
                 <Layout>
-                    <Transition tKey={router.route}>
+                    <Transition route={router.route}>
                         <Component {...pageProps} />
                     </Transition>
                 </Layout>
