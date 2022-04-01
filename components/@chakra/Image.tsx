@@ -9,7 +9,9 @@ const Image = ({ src, alt, ratio, ...rest }: Props) => (
             <NextImage
                 objectFit="cover"
                 layout="fill"
+                placeholder="blur"
                 src={src}
+                blurDataURL={src}
                 alt={alt}
             />
         </AspectRatio>
