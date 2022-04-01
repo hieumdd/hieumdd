@@ -11,6 +11,7 @@ const nextConfig = {
         dangerouslyAllowSVG: true,
     },
     reactStrictMode: true,
+    swcMinify: true,
 };
 
 module.exports = nextConfig;
