@@ -8,7 +8,7 @@ import { MDXFile, getAllFilesFrontMatter } from '@/lib/mdx';
 type ArticleProps = { articles: MDXFile[] };
 
 const Articles: NextPage<ArticleProps> = ({ articles }) => (
-    <SectionStack>
+    <SectionStack pt="10vh">
         <Section heading="Articles">
             <Listing articles={articles} />
         </Section>

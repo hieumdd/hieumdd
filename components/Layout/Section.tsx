@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
-import { Heading, StackDivider, VStack } from '@chakra-ui/react';
+import { StackProps, Heading, StackDivider, VStack } from '@chakra-ui/react';
 
-type SectionProps = {
+type SectionProps = StackProps & {
     heading?: string;
     children: ReactNode;
 };
@@ -13,8 +13,8 @@ export const Section = ({ heading, children }: SectionProps) => (
     </VStack>
 );
 
-export const SectionStack: FC = ({ children }) => (
-    <VStack w="100%" spacing="4em" divider={<StackDivider />}>
+export const SectionStack: FC<StackProps> = ({ children, ...rest }) => (
+    <VStack w="100%" spacing="4em" divider={<StackDivider />} pt={rest.pt || 0}>
         {children}
     </VStack>
 );
