@@ -10,8 +10,9 @@ import TagManager from 'react-gtm-module';
 import theme from '../styles/theme';
 
 import layouts, { Layout } from '../components/Layout';
+import Transition from '../components/Layout/Transition';
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps, router }: AppProps) => {
     const Layout = layouts[pageProps.layout as keyof Layout] || layouts.home;
 
     useEffect(
@@ -39,7 +40,9 @@ const App = ({ Component, pageProps }: AppProps) => {
             />
             <ChakraProvider theme={theme}>
                 <Layout>
-                    <Component {...pageProps} />
+                    <Transition key={router.route}>
+                        <Component {...pageProps} />
+                    </Transition>
                 </Layout>
             </ChakraProvider>
         </>
