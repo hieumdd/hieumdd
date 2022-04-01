@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import '@fontsource/comfortaa';
 import '@fontsource/comfortaa/variable.css';
 
 import { DefaultSeo } from 'next-seo';
+import TagManager from 'react-gtm-module';
 
 import theme from '../styles/theme';
 
@@ -12,6 +13,17 @@ import layouts, { Layout } from '../components/Layout';
 
 const App = ({ Component, pageProps }: AppProps) => {
     const Layout = layouts[pageProps.layout as keyof Layout] || layouts.home;
+
+    useEffect(
+        () =>
+            TagManager.initialize({
+                gtmId: process.env.GTM_ID || '',
+                auth: process.env.GTM_AUTH || '',
+                preview: process.env.GTM_ENV || '',
+            }),
+        [],
+    );
+
     return (
         <>
             <DefaultSeo
