@@ -32,7 +32,7 @@ const CustomLink: MDXComponent = ({ href, children }) => {
     }
 
     return (
-        <Link isExternal as="span">
+        <Link href={href} isExternal >
             {children}
             <Icon as={HiExternalLink} verticalAlign="text-top" />
         </Link>
