@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 
 import { SectionStack, Section } from '../../components/Layout/Section';
-import Listing from '../../components/Articles/Listing';
+import { Listing } from '../../components/Articles/Articles';
 
 import { getAllFilesFrontMatter } from '../../lib/mdx';
 import { MDXFile } from '../../lib/mdx';

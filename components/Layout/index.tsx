@@ -4,6 +4,11 @@ import { Container } from '@chakra-ui/react';
 import Header from './Header';
 import Footer from './Footer';
 
+export type PageProps = {
+    layout: string;
+    title: string;
+}
+
 export type Layout = {
     [key: string]: FC;
 }

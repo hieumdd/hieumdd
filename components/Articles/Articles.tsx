@@ -5,7 +5,19 @@ import Pagination from '@choc-ui/paginator';
 import Card from './Card';
 import { MDXFile } from '../../lib/mdx';
 
-const Listing: FC<{ articles: MDXFile[] }> = ({ articles }) => {
+type Props = {
+    articles: MDXFile[];
+};
+
+export const Articles: FC<Props> = ({ articles }) => (
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
+        {articles.map((article, i) => (
+            <Card key={i} {...article} />
+        ))}
+    </SimpleGrid>
+);
+
+export const Listing: FC<Props> = ({ articles }) => {
     const defaultPage = 1;
     const [page, setPage] = useState<number>(defaultPage);
     const pageSize = 4;
@@ -46,14 +58,8 @@ const Listing: FC<{ articles: MDXFile[] }> = ({ articles }) => {
     return (
         <>
             <Paginator />
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
-                {_articles.map((article, i) => (
-                    <Card key={i} {...article} />
-                ))}
-            </SimpleGrid>
+            <Articles articles={_articles} />
             <Paginator />
         </>
     );
 };
-
-export default Listing;
