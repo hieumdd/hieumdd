@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 
-import { SectionStack, Section } from '../components/Layout/Section';
-import { PageProps } from '../components/Layout';
-import Hero from '../components/Home/Hero';
-import Expertise from '../components/Home/Expertise';
-import { Articles } from '../components/Articles/Articles';
+import { SectionStack, Section } from '@/components/Layout/Section';
+import { PageProps } from '@/components/Layout';
+import Hero from '@/components/Home/Hero';
+import Expertise from '@/components/Home/Expertise';
+import { Articles } from '@/components/Articles/Articles';
 
-import { MDXFile, getAllFilesFrontMatter } from '../lib/mdx';
+import { MDXFile, getAllFilesFrontMatter } from '@/lib/mdx';
 
 type Props = PageProps & {
     articles: MDXFile[];

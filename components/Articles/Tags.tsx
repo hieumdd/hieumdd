@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Wrap, WrapItem, Tag } from '@chakra-ui/react';
 
-import { MDXFile } from '../../lib/mdx';
+import { MDXFile } from '@/lib/mdx';
 
 type TimeProps = Pick<MDXFile['frontMatter'], 'tags'>;
 

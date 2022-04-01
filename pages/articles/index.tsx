@@ -1,10 +1,9 @@
 import type { NextPage } from 'next';
 
-import { SectionStack, Section } from '../../components/Layout/Section';
-import { Listing } from '../../components/Articles/Articles';
+import { SectionStack, Section } from '@/components/Layout/Section';
+import { Listing } from '@/components/Articles/Articles';
 
-import { getAllFilesFrontMatter } from '../../lib/mdx';
-import { MDXFile } from '../../lib/mdx';
+import { MDXFile, getAllFilesFrontMatter } from '@/lib/mdx';
 
 type ArticleProps = { articles: MDXFile[] };
 

@@ -9,8 +9,8 @@ import TagManager from 'react-gtm-module';
 
 import theme from '../styles/theme';
 
-import layouts, { Layout } from '../components/Layout';
-import Transition from '../components/Layout/Transition';
+import layouts, { Layout } from '@/components/Layout';
+import Transition from '@/components/Layout/Transition';
 
 const App = ({ Component, pageProps, router }: AppProps) => {
     const Layout = layouts[pageProps.layout as keyof Layout] || layouts.home;

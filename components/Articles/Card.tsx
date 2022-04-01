@@ -5,7 +5,7 @@ import { VStack, LinkBox, LinkOverlay, Text, Heading } from '@chakra-ui/react';
 import Image from '../@chakra/Image';
 import Time from './Time';
 import Tags from './Tags';
-import { MDXFile } from '../../lib/mdx';
+import { MDXFile } from '@/lib/mdx';
 
 const Card: FC<MDXFile> = ({ frontMatter }) => {
     const { path, title, cover, summary } = frontMatter;

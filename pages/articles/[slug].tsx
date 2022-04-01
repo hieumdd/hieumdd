@@ -2,13 +2,13 @@ import { NextPage } from 'next';
 import { VStack, Text, Heading, Divider } from '@chakra-ui/react';
 import { MDXRemote } from 'next-mdx-remote';
 
-import { MDXFile, getFiles, getFileFrontMatter } from '../../lib/mdx';
-import components from '../../components/Articles/mdxComponents';
-import Image from '../../components/@chakra/Image';
-import Time from '../../components/Articles/Time';
-import Tags from '../../components/Articles/Tags';
-import Breadcrumb from '../../components/Articles/Breadcrumb';
-import Comment from '../../components/Articles/Comment';
+import { MDXFile, getFiles, getFileFrontMatter } from '@/lib/mdx';
+import components from '@/components/Articles/mdxComponents';
+import Image from '@/components/@chakra/Image';
+import Time from '@/components/Articles/Time';
+import Tags from '@/components/Articles/Tags';
+import Breadcrumb from '@/components/Articles/Breadcrumb';
+import Comment from '@/components/Articles/Comment';
 
 type ArticleMeta = {
     params: {
