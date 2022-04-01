@@ -48,6 +48,7 @@ const Hero = () => (
                 Full-Stack Developer - Data Engineer, focused on{'  '}
                 <chakra.span
                     as={Link}
+                    isExternal
                     color="purple.400"
                     fontWeight="bold"
                     href={process.env.REPO_URL}
