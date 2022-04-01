@@ -48,7 +48,7 @@ export const getStaticProps = async ({ params }: ArticleMeta) => {
     const mdx = await getFileFrontMatter('articles', params.slug);
     return {
         props: {
-            layout: 'articles',
+            layout: 'article',
             title: mdx.frontMatter.title,
             mdx,
         },

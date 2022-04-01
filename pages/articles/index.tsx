@@ -8,7 +8,7 @@ import { MDXFile, getAllFilesFrontMatter } from '@/lib/mdx';
 type ArticleProps = { articles: MDXFile[] };
 
 const Articles: NextPage<ArticleProps> = ({ articles }) => (
-    <SectionStack pt="10vh">
+    <SectionStack>
         <Section heading="Articles">
             <Listing articles={articles} />
         </Section>
@@ -17,7 +17,7 @@ const Articles: NextPage<ArticleProps> = ({ articles }) => (
 
 export const getStaticProps = async () => ({
     props: {
-        layout: 'home',
+        layout: 'articles',
         title: 'Articles',
         articles: await getAllFilesFrontMatter('articles'),
     },
