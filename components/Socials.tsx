@@ -21,7 +21,7 @@ const socials: Social[] = [
     },
     {
         icon: <FaLinkedin fontSize="20px"/>,
-        link: 'https://linkedin.com/hieumdd',
+        link: 'https://linkedin.com/in/hieumdd/',
         text: '/hieumdd',
     },
     {

@@ -20,7 +20,6 @@ const App = ({ Component, pageProps, router }: AppProps) => {
             TagManager.initialize({
                 gtmId: process.env.GTM_ID || '',
                 auth: process.env.GTM_AUTH || '',
-                preview: process.env.GTM_ENV || '',
             }),
         [],
     );
