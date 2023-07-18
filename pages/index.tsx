@@ -2,6 +2,12 @@ import type { NextPage } from 'next';
 import {
     Box,
     Button,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Container,
+    Flex,
     Heading,
     HStack,
     Icon,
@@ -19,30 +25,32 @@ import { useLottie } from 'lottie-react';
 import { ArticleList } from '../components/article/article-list';
 import { MDXFile, getFiles } from '../services/mdx.service';
 import animationData from '../public/lottie/hello.json';
-import { Expertise, useExpertises } from '../hooks/use-expertise';
+import { Service, useServices } from '../hooks/use-service';
 
-type ExpertiseCardProps = Expertise;
+type ServiceCardProps = Service;
 
-const ExpertiseCard = (props: ExpertiseCardProps) => {
+const ServiceCard = (props: ServiceCardProps) => {
     const { title, icon, description, tools } = props;
 
     return (
-        <VStack p="1rem" spacing="1em">
-            <HStack fontSize="1.5em" align="flex-start" spacing="0.75em">
-                <Box p={1}>
-                    <Icon as={icon} lineHeight="1.5em" />
-                </Box>
-                <Text fontWeight="bold">{title}</Text>
-            </HStack>
-            <Text>{description}</Text>
-            <Wrap>
-                {tools.map((tool, i) => (
-                    <WrapItem key={i}>
-                        <Tag variant="outline">{tool}</Tag>
-                    </WrapItem>
-                ))}
-            </Wrap>
-        </VStack>
+        <Card>
+            <CardBody as={VStack} spacing={4} alignItems="stretch">
+                <HStack>
+                    <Icon as={icon} />
+                    <Heading as="h3" size="sm">
+                        {title}
+                    </Heading>
+                </HStack>
+                <Text>{description}</Text>
+                <Wrap>
+                    {tools.map((tool, i) => (
+                        <WrapItem key={i}>
+                            <Tag variant="outline">{tool}</Tag>
+                        </WrapItem>
+                    ))}
+                </Wrap>
+            </CardBody>
+        </Card>
     );
 };
 
@@ -55,17 +63,17 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
 
     const { View: LottieView } = useLottie(lottieOptions);
 
-    const expertises = useExpertises();
+    const services = useServices();
 
     return (
-        <VStack>
+        <Container as={VStack} spacing={8}>
             <Stack
                 align="center"
                 direction={{ base: 'column-reverse', md: 'row' }}
                 justifyContent={{ base: 'center', md: 'space-between' }}
-                spacing="4em"
+                spacing="4rem"
             >
-                <Stack
+                <VStack
                     direction="column"
                     align="flex-start"
                     textAlign="left"
@@ -76,33 +84,32 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                         {`Hey, I'm HM`}
                     </Heading>
                     <Text>
-                        Full-Stack Developer - Data Engineer, focused on{'  '}
+                        {`I'm a Full-Stack Developer - Data Engineer, focused on `}
                         <Link as="span" fontWeight="bold" href={process.env.REPO_URL}>
-                            Python & Google Cloud Platform.
+                            Google Cloud Platform & NetSuite.
                         </Link>
-                        This is my personal portfolio, where my self taught front-end skills are
-                        practised.
                     </Text>
                     <Button as={Link} href={process.env.CV_URL}>
                         Get my CV
                     </Button>
-                </Stack>
-
+                </VStack>
                 <Box flex="0 0 40%">{LottieView}</Box>
             </Stack>
-            <VStack>
-                <Heading as="h2">Primary Expertises</Heading>
+            <VStack spacing={4} alignItems="stretch">
+                <Heading as="h2" size="lg">
+                    Services
+                </Heading>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
-                    {expertises.map((expertise) => (
-                        <ExpertiseCard key={expertise.title} {...expertise} />
+                    {services.map((service) => (
+                        <ServiceCard key={service.title} {...service} />
                     ))}
                 </SimpleGrid>
             </VStack>
-            <VStack>
+            <VStack spacing={4} alignItems="stretch">
                 <Heading as="h2">Latest Articles</Heading>
-                <ArticleList articles={articles} />
+                {/* <ArticleList articles={articles} /> */}
             </VStack>
-        </VStack>
+        </Container>
     );
 };
 

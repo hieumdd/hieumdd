@@ -1,14 +1,14 @@
 import { IconType } from 'react-icons';
 import { FaChartLine, FaCode, FaFingerprint, FaCog } from 'react-icons/fa';
 
-export type Expertise = {
+export type Service = {
     title: string;
     description: string;
     icon: IconType;
     tools: string[];
 };
 
-export const useExpertises = (): Expertise[] => [
+export const useServices = (): Service[] => [
     {
         title: 'Data Engineering',
         description:

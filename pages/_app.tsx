@@ -25,7 +25,7 @@ const App = ({ Component, pageProps }: AppProps<PageProps>) => {
                 ]}
             />
             <ChakraProvider theme={theme}>
-                <Header />
+                {/* <Header /> */}
                 <Component {...pageProps} />
                 <Footer />
             </ChakraProvider>
