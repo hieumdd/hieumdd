@@ -6,7 +6,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import dayjs from 'dayjs';
 
-type FrontMatter = {
+export type FrontMatter = {
     title: string;
     cover: string;
     updatedAt: string;
@@ -23,21 +23,18 @@ export type MDXFile = {
     };
 };
 
+
 const root = process.cwd();
 const dataDir = 'data';
 
-export const getFiles = (type: string) =>
-    fs
+const getPaths = (type: string) => {
+    return fs
         .readdirSync(path.join(root, dataDir, type))
-        .map((f) => f.replace(/\\/g, '/'));
+        .map((f) => f.replace(/\\/g, '/'))
+}
 
-export const getFileFrontMatter = async (
-    type: string,
-    slug: string,
-): Promise<MDXFile> => {
-    const source =
-        slug &&
-        fs.readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
+export const getFile = async (type: string, slug: string): Promise<MDXFile> => {
+    const source = fs.readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
 
     const {
         data: { title, cover, updatedAt, summary, tags },
@@ -61,21 +58,16 @@ export const getFileFrontMatter = async (
     };
 };
 
-export const getAllFilesFrontMatter = async (
-    type: string,
-): Promise<MDXFile[]> => {
+export const getFiles = async (type: string): Promise<MDXFile[]> => {
     const files = await Promise.all(
-        getFiles(type)
+        getPaths(type)
             .map((slug) => slug.replace(/.mdx/, ''))
-            .map((slug) => getFileFrontMatter(type, slug)),
-    ).then((file) =>
-        file.sort((a, b) =>
-            dayjs(a.frontMatter.updatedAt).isAfter(
-                dayjs(b.frontMatter.updatedAt),
-            )
-                ? 1
-                : -1,
-        ),
+            .map((slug) => getFile(type, slug)),
+    ).then((file) => {
+        return file.sort((a, b) => {
+            return dayjs(a.frontMatter.updatedAt).isAfter(dayjs(b.frontMatter.updatedAt)) ? 1 : -1
+        })
+    }
     );
 
     return Array(25)

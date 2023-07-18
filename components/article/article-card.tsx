@@ -1,14 +1,14 @@
-import { FC } from 'react';
 import NextLink from 'next/link';
 import { VStack, LinkBox, LinkOverlay, Text, Heading } from '@chakra-ui/react';
 
-import Image from '../@chakra/Image';
-import Time from './Time';
-import Tags from './Tags';
-import { MDXFile } from '@/lib/mdx';
+import { ArticleImage } from './article-image';
+import { ArticleReadingTime } from './article-reading-time';
+import { ArticleTags } from './article-tags';
+import { MDXFile } from '../../services/mdx.service';
 
-const Card: FC<MDXFile> = ({ frontMatter }) => {
+export const ArticleCard = ({ frontMatter }: MDXFile) => {
     const { path, title, cover, summary } = frontMatter;
+
     return (
         <LinkBox className="hover-color" as="article" borderWidth="2px">
             <NextLink href={path} passHref>
@@ -20,18 +20,16 @@ const Card: FC<MDXFile> = ({ frontMatter }) => {
                         alignItems="stretch"
                         role="group"
                     >
-                        <Time {...frontMatter} />
-                        <Image src={cover} alt="title" ratio={2 / 1} />
+                        <ArticleReadingTime {...frontMatter} />
+                        <ArticleImage src={cover} alt="title" ratio={2 / 1} />
                         <Heading as="h2" size="md">
                             {title}
                         </Heading>
                         <Text>{summary}</Text>
-                        <Tags {...frontMatter} />
+                        <ArticleTags {...frontMatter} />
                     </VStack>
                 </LinkOverlay>
             </NextLink>
         </LinkBox>
     );
 };
-
-export default Card;
