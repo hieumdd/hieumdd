@@ -1,37 +1,20 @@
 import { extendTheme } from '@chakra-ui/react';
 
-export default extendTheme({
-    fonts: {
-        heading: "Comfortaa, sans-serif",
-        body: "Comfortaa, sans-serif",
-    },
-    styles: {
-        global: {
-            '*:not(svg)': {
-                color: 'gray.800',
-                borderStyle: 'solid',
-                borderRadius: 'md',
-            },
-            body: {
-                backgroundColor: 'gray.50',
-            },
-            '.shadow': {
-                boxShadow: 'base',
-            },
-            '.hover-shadow': {
-                _hover: {
-                    boxShadow: 'lg',
-                },
-            },
-            '.hover-color': {
-                _hover: {
-                    borderColor: 'purple.400',
-                },
-                _groupHover: {
-                    color: 'purple.400',
-                },
-            },
-        },
+export const theme = extendTheme({
+    colors: {
+        nord: {
+            50: "#FCFCFD",
+            100: "#F5F7F9",
+            200: "#EBEEF4",
+            300: "#E2E6EE",
+            400: "#D8DEE9",
+            500: "#A7B4CD",
+            600: "#798EB4",
+            700: "#516790",
+            800: "#35445F",
+            900: "#1C2331",
+            950: "#0D1017"
+        }
     },
     components: {
         Container: {

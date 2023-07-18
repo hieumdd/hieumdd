@@ -1,26 +1,26 @@
 import type { NextPage } from 'next';
 
-import { SectionStack, Section } from '@/components/Layout/Section';
-import { Listing } from '@/components/Articles/Articles';
+import { ArticleList } from '../../components/article/article-list';
+import { MDXFile, getFiles } from '../../services/mdx.service';
+import { Heading } from '@chakra-ui/react';
 
-import { MDXFile, getAllFilesFrontMatter } from '@/lib/mdx';
+type ArticlesProps = {
+    articles: MDXFile[];
+};
 
-type ArticleProps = { articles: MDXFile[] };
+const Articles: NextPage<ArticlesProps> = ({ articles }) => {
+    return (
+        <>
+            <Heading as="h2">Articles</Heading>
+            <ArticleList articles={articles} />
+        </>
+    );
+};
 
-const Articles: NextPage<ArticleProps> = ({ articles }) => (
-    <SectionStack>
-        <Section heading="Articles">
-            <Listing articles={articles} />
-        </Section>
-    </SectionStack>
-);
+export const getStaticProps = async () => {
+    const articles = await getFiles('articles');
 
-export const getStaticProps = async () => ({
-    props: {
-        layout: 'articles',
-        title: 'Articles',
-        articles: await getAllFilesFrontMatter('articles'),
-    },
-});
+    return { props: { layout: 'articles', title: 'Articles', articles } };
+};
 
 export default Articles;

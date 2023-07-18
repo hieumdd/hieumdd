@@ -1,29 +1,16 @@
-import { useEffect } from 'react';
 import { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
-import '@fontsource/comfortaa';
-import '@fontsource/comfortaa/variable.css';
-
 import { DefaultSeo } from 'next-seo';
-import TagManager from 'react-gtm-module';
+import { ChakraProvider } from '@chakra-ui/react';
 
-import theme from '../styles/theme';
+import { theme } from '../styles/theme';
+import { Header } from '../components/layout/header';
+import { Footer } from '../components/layout/footer';
 
-import layouts, { Layout } from '@/components/Layout';
-import Transition from '@/components/Layout/Transition';
+export type PageProps = {
+    title: string;
+};
 
-const App = ({ Component, pageProps, router }: AppProps) => {
-    const Layout = layouts[pageProps.layout as keyof Layout] || layouts.home;
-
-    useEffect(
-        () =>
-            TagManager.initialize({
-                gtmId: process.env.GTM_ID || '',
-                auth: process.env.GTM_AUTH || '',
-            }),
-        [],
-    );
-
+const App = ({ Component, pageProps }: AppProps<PageProps>) => {
     return (
         <>
             <DefaultSeo
@@ -38,11 +25,9 @@ const App = ({ Component, pageProps, router }: AppProps) => {
                 ]}
             />
             <ChakraProvider theme={theme}>
-                <Layout>
-                    <Transition route={router.route}>
-                        <Component {...pageProps} />
-                    </Transition>
-                </Layout>
+                <Header />
+                <Component {...pageProps} />
+                <Footer />
             </ChakraProvider>
         </>
     );
