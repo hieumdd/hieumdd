@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 export const Layout = ({ children }: PropsWithChildren) => {
     return (
         <Container
-            minH={{ base: 'calc(100vh - (80px + 88px))', md: 'calc(100vh - (160px + 88px))' }}
+            minH={{ base: 'calc(100vh - (112px + 128px))', md: 'calc(100vh - (160px + 128px))' }}
             mt={{ base: 28, md: 40 }}
         >
             {children}
