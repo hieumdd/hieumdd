@@ -4,6 +4,7 @@ import { Box, Container, Flex, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { useWindowScroll } from 'react-use';
 
 import { DesktopMenu, MobileMenu } from './menu';
+import profileNord from '../../public/icons/profile-nord.svg';
 
 export const Header = () => {
     const { y } = useWindowScroll();
@@ -22,7 +23,7 @@ export const Header = () => {
                 <Box display={{ base: 'block', md: 'none' }} boxSize={10} />
                 <LinkBox boxSize={10}>
                     <LinkOverlay as={NextLink} href="/" passHref>
-                        <NextImage src="/icons/profile_nord.svg" layout="fill" alt="" />
+                        <NextImage src={profileNord} layout="fill" alt="" />
                     </LinkOverlay>
                 </LinkBox>
                 <DesktopMenu />

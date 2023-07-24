@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps<PageProps>) => {
                 additionalLinkTags={[
                     {
                         rel: 'icon',
-                        href: 'icons/profile_nord.svg',
+                        href: 'icons/profile-nord.svg',
                     },
                 ]}
             />
