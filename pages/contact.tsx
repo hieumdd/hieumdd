@@ -18,6 +18,7 @@ const Contact: NextPage = () => {
             <InlineWidget
                 url="https://calendly.com/hieumdd"
                 pageSettings={{ hideEventTypeDetails: true, hideGdprBanner: true }}
+                styles={{ height: 400 }}
             />
             <Stack flex="1" direction="column" spacing={4}>
                 <SocialCard label="Github" icon={IoLogoGithub} href={github} />
