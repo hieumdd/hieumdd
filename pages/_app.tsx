@@ -5,6 +5,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../styles/theme';
 import { Header } from '../components/layout/header';
 import { Footer } from '../components/layout/footer';
+import { Layout } from '../components/layout/layout';
 
 export type PageProps = {
     title: string;
@@ -25,8 +26,10 @@ const App = ({ Component, pageProps }: AppProps<PageProps>) => {
                 ]}
             />
             <ChakraProvider theme={theme}>
-                {/* <Header /> */}
-                <Component {...pageProps} />
+                <Header />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
                 <Footer />
             </ChakraProvider>
         </>

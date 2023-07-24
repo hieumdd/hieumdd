@@ -23,7 +23,6 @@ export type MDXFile = {
     };
 };
 
-
 const root = process.cwd();
 const dataDir = 'data';
 

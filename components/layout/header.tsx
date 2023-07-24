@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import NextLink from 'next/link';
 import NextImage from 'next/image';
 import {
-    Box,
     Container,
     Flex,
     LinkBox,
@@ -10,52 +9,31 @@ import {
     useDisclosure,
     useOutsideClick,
 } from '@chakra-ui/react';
+import { useWindowScroll } from 'react-use';
+
+import { DesktopMenu, MobileMenu } from './menu';
 
 export const Header = () => {
-    const ref = useRef(null);
-    const { isOpen, onClose, onToggle } = useDisclosure();
-    const [isScrolled, setScrolled] = useState(false);
-
-    useOutsideClick({
-        ref,
-        handler: () => onClose(),
-    });
-
-    useEffect(() => {
-        const handleScrolled = () => {
-            const scrolled = document.documentElement.scrollTop;
-            if (scrolled > 0) {
-                setScrolled(true);
-            } else if (scrolled === 0) {
-                setScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScrolled);
-    }, []);
+    const { y } = useWindowScroll();
 
     return (
         <Flex
             as="header"
-            pos="fixed"
-            borderRadius={0}
+            position="fixed"
+            top={0}
             width="100%"
             zIndex={999}
             bgColor="nord.50"
-            ref={ref}
-            className={isScrolled ? 'shadow' : ''}
+            boxShadow={y > 0 ? 'md' : 'none'}
         >
-            <Container>
-                <Flex as="nav" flexDirection="column">
-                    <Flex py={4} borderRadius={0} justify="space-between">
-                        <Box boxSize={8} display={{ base: 'flex', md: 'none' }} />
-                        <LinkBox boxSize="40px">
-                            <LinkOverlay as={NextLink} href="/" passHref>
-                                <NextImage src="/icons/profile_nord.svg" layout="fill" alt="" />
-                            </LinkOverlay>
-                        </LinkBox>
-                    </Flex>
-                </Flex>
+            <Container as="nav" flex="1" py={4} display="flex" justifyContent="space-between">
+                <LinkBox boxSize="40px">
+                    <LinkOverlay as={NextLink} href="/" passHref>
+                        <NextImage src="/icons/profile_nord.svg" layout="fill" alt="" />
+                    </LinkOverlay>
+                </LinkBox>
+                <DesktopMenu />
+                <MobileMenu />
             </Container>
         </Flex>
     );
