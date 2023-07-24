@@ -13,7 +13,7 @@ const Contact: NextPage = () => {
         <Stack
             direction={{ base: 'column-reverse', md: 'row' }}
             justifyContent="space-between"
-            spacing={4}
+            spacing={8}
         >
             <InlineWidget
                 url="https://calendly.com/hieumdd"

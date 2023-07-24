@@ -52,7 +52,7 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                 <Heading as="h2" size="lg">
                     Services
                 </Heading>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
                     {services.map((service) => (
                         <ServiceCard key={service.title} {...service} />
                     ))}

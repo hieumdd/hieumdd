@@ -8,7 +8,7 @@ type ArticleList = {
 };
 
 export const ArticleList = ({ articles }: ArticleList) => (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing="2em">
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
         {articles.map((article, i) => (
             <ArticleCard key={i} {...article} />
         ))}

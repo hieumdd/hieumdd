@@ -26,7 +26,7 @@ const Article: NextPage<ArticleProps> = ({ mdx }) => {
     const { path, title, cover, summary } = frontMatter;
 
     return (
-        <VStack spacing="1em" align="flex-start" alignItems="stretch">
+        <VStack spacing={4} alignItems="stretch">
             <Breadcrumb>
                 <BreadcrumbItem>
                     <NextLink href="/" passHref>
@@ -52,18 +52,17 @@ const Article: NextPage<ArticleProps> = ({ mdx }) => {
     );
 };
 
-type ArticleMeta = { params: { slug: string } };
 
 export const getStaticPaths = async () => {
     const articles = await getFiles('article');
-
+    
     return {
         paths: articles.map((article) => ({ params: { slug: article.frontMatter.slug } })),
         fallback: false,
     };
 };
 
-export const getStaticProps = async ({ params }: ArticleMeta) => {
+export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
     const mdx = await getFile('article', params.slug);
 
     return { props: { title: mdx.frontMatter.title, mdx } };
