@@ -11,7 +11,7 @@ export const Footer = () => {
         <Container as="footer" my={8} display="flex" flexDirection="column" alignItems="center">
             <LinkBox as={VStack} spacing={4}>
                 <LinkOverlay href={repo} isExternal>
-                    <Icon fontSize="1.5rem" as={IoLogoGithub} display="block" />
+                    <Icon fontSize="2xl" as={IoLogoGithub} display="block" />
                 </LinkOverlay>
                 <Text>HM @ {dayjs().year()}</Text>
             </LinkBox>
