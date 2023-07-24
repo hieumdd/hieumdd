@@ -6,6 +6,7 @@ import { theme } from '../styles/theme';
 import { Header } from '../components/layout/header';
 import { Footer } from '../components/layout/footer';
 import { Layout } from '../components/layout/layout';
+import '../styles/prism-one-light.css';
 
 export type PageProps = {
     title: string;

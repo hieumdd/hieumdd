@@ -5,6 +5,7 @@ import readingTime, { ReadTimeResults } from 'reading-time';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
+import rehypePrism from 'rehype-prism-plus';
 import dayjs from 'dayjs';
 
 export type FrontMatter = {
@@ -39,7 +40,9 @@ export const getFile = async (type: string, slug: string): Promise<MDXFile> => {
         content: _content,
     } = matter(source);
 
-    const content = await serialize(_content, { mdxOptions: { remarkPlugins: [[remarkGfm]] } });
+    const content = await serialize(_content, {
+        mdxOptions: { remarkPlugins: [[remarkGfm]], rehypePlugins: [[rehypePrism]] },
+    });
 
     return {
         content,
