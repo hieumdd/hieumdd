@@ -55,7 +55,7 @@ const Article: NextPage<ArticleProps> = ({ mdx }) => {
 type ArticleMeta = { params: { slug: string } };
 
 export const getStaticPaths = async () => {
-    const articles = await getFiles('articles');
+    const articles = await getFiles('article');
 
     return {
         paths: articles.map((article) => ({ params: { slug: article.frontMatter.slug } })),
@@ -64,7 +64,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: ArticleMeta) => {
-    const mdx = await getFile('articles', params.slug);
+    const mdx = await getFile('article', params.slug);
 
     return { props: { title: mdx.frontMatter.title, mdx } };
 };

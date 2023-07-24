@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
+import { Heading, VStack } from '@chakra-ui/react';
 
 import { ArticleList } from '../../components/article/article-list';
 import { MDXFile, getFiles } from '../../services/mdx.service';
-import { Heading } from '@chakra-ui/react';
 
 type ArticlesProps = {
     articles: MDXFile[];
@@ -10,17 +10,17 @@ type ArticlesProps = {
 
 const Articles: NextPage<ArticlesProps> = ({ articles }) => {
     return (
-        <>
+        <VStack alignItems={{ base: 'center', md: 'flex-start' }} spacing={4}>
             <Heading as="h2">Articles</Heading>
             <ArticleList articles={articles} />
-        </>
+        </VStack>
     );
 };
 
 export const getStaticProps = async () => {
-    const articles = await getFiles('articles');
+    const articles = await getFiles('article');
 
-    return { props: { layout: 'articles', title: 'Articles', articles } };
+    return { props: { title: 'Articles', articles } };
 };
 
 export default Articles;

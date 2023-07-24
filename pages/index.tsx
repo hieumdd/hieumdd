@@ -48,7 +48,7 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                 </VStack>
                 <Box flex="0 0 40%">{LottieView}</Box>
             </Stack>
-            <VStack spacing={4} alignItems="stretch">
+            <VStack spacing={4} alignItems={{ base: 'center', md: 'flex-start' }}>
                 <Heading as="h2" size="lg">
                     Services
                 </Heading>
@@ -58,7 +58,7 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                     ))}
                 </SimpleGrid>
             </VStack>
-            <VStack spacing={4} alignItems="stretch">
+            <VStack spacing={4} alignItems={{ base: 'center', md: 'flex-start' }}>
                 <Heading as="h2" size="lg">
                     Articles
                 </Heading>
@@ -69,11 +69,11 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
 };
 
 export const getStaticProps = async () => {
-    const articles = await getFiles('articles').then((articles) => {
+    const articles = await getFiles('article').then((articles) => {
         return articles.slice(0, 2);
     });
 
-    return { props: { layout: 'home', title: 'Home', articles } };
+    return { props: { title: 'Home', articles } };
 };
 
 export default Home;

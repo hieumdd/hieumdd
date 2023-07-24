@@ -1,15 +1,5 @@
 import NextLink from 'next/link';
-import {
-    Card,
-    CardBody,
-    CardFooter,
-    CardHeader,
-    Heading,
-    LinkBox,
-    LinkOverlay,
-    Text,
-    VStack,
-} from '@chakra-ui/react';
+import { Card, CardBody, Heading, LinkBox, LinkOverlay, Text, VStack } from '@chakra-ui/react';
 
 import { ArticleImage } from './article-image';
 import { ArticleReadingTime } from './article-reading-time';
