@@ -14,9 +14,7 @@ type HomeProps = {
 };
 
 const Home: NextPage<HomeProps> = ({ articles }) => {
-    const lottieOptions = { animationData, loop: true, autoplay: true };
-
-    const { View: LottieView } = useLottie(lottieOptions);
+    const { View: LottieView } = useLottie({ animationData, loop: true, autoplay: true });
 
     const services = useServices();
     const { cv, github } = useSocialLinks();

@@ -1,15 +1,12 @@
-import NextLink from 'next/link';
-import { VStack, Button, Text } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
+import { useLottie } from 'lottie-react';
+
+import animationData from '../public/lottie/404.json';
 
 const NotFound = () => {
-    return (
-        <VStack w="100%">
-            <Text>The requested link is not found</Text>
-            <NextLink href="/" passHref>
-                <Button>Home</Button>
-            </NextLink>
-        </VStack>
-    );
+    const { View: LottieView } = useLottie({ animationData, loop: true, autoplay: true });
+
+    return <Center>{LottieView}</Center>;
 };
 
 export const getStaticProps = () => ({ props: { title: '404' } });
