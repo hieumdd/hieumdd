@@ -49,7 +49,7 @@ export const getFile = async (type: string, slug: string): Promise<MDXFile> => {
         frontMatter: {
             slug,
             title,
-            cover,
+            cover: `${process.env.BASE_PATH}/${cover}`,
             updatedAt,
             summary,
             tags,

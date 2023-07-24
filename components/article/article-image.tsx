@@ -14,8 +14,8 @@ export const ArticleImage = ({ src, alt, ratio }: ArticleImageProps) => {
         <AspectRatio position="relative" ratio={ratio} borderRadius="md">
             <NextImage
                 placeholder="blur"
-                blurDataURL={src}
                 src={src}
+                blurDataURL={src}
                 alt={alt}
                 style={{ borderRadius, objectFit: 'cover' }}
                 fill

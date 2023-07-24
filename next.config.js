@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = (env) => ({
     reactStrictMode: true,
     output: 'export',
-    basePath: "/hieumdd",
+    basePath: env.BASE_PATH,
     images: {
         unoptimized: true,
     },
-};
+});
 
 module.exports = nextConfig;
