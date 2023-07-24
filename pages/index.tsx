@@ -1,58 +1,13 @@
 import type { NextPage } from 'next';
-import {
-    Box,
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Container,
-    Flex,
-    Heading,
-    HStack,
-    Icon,
-    Link,
-    SimpleGrid,
-    Stack,
-    Tag,
-    Text,
-    VStack,
-    Wrap,
-    WrapItem,
-} from '@chakra-ui/react';
+import { Box, Button, Heading, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react';
 import { useLottie } from 'lottie-react';
 
-import { ArticleList } from '../components/article/article-list';
 import { MDXFile, getFiles } from '../services/mdx.service';
+import { useServices } from '../hooks/use-service';
+import { useSocialLinks } from '../hooks/use-social-link';
+import { ServiceCard } from '../components/service-card';
+import { ArticleList } from '../components/article/article-list';
 import animationData from '../public/lottie/hello.json';
-import { Service, useServices } from '../hooks/use-service';
-
-type ServiceCardProps = Service;
-
-const ServiceCard = (props: ServiceCardProps) => {
-    const { title, icon, description, tools } = props;
-
-    return (
-        <Card>
-            <CardBody as={VStack} spacing={4} alignItems="stretch">
-                <HStack>
-                    <Icon as={icon} />
-                    <Heading as="h3" size="sm">
-                        {title}
-                    </Heading>
-                </HStack>
-                <Text>{description}</Text>
-                <Wrap>
-                    {tools.map((tool, i) => (
-                        <WrapItem key={i}>
-                            <Tag variant="outline">{tool}</Tag>
-                        </WrapItem>
-                    ))}
-                </Wrap>
-            </CardBody>
-        </Card>
-    );
-};
 
 type HomeProps = {
     articles: MDXFile[];
@@ -64,32 +19,33 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
     const { View: LottieView } = useLottie(lottieOptions);
 
     const services = useServices();
+    const { cv, github } = useSocialLinks();
 
     return (
-        <Container as={VStack} spacing={8}>
+        <VStack spacing={8}>
             <Stack
                 align="center"
                 direction={{ base: 'column-reverse', md: 'row' }}
                 justifyContent={{ base: 'center', md: 'space-between' }}
-                spacing="4rem"
+                spacing={4}
             >
                 <VStack
                     direction="column"
                     align="flex-start"
                     textAlign="left"
-                    spacing={{ base: '1em', md: '2em' }}
+                    spacing={{ base: 2, md: 4 }}
                     flex="1 0 50%"
                 >
-                    <Heading as="h1" fontSize="3em">
+                    <Heading as="h1" size="xl">
                         {`Hey, I'm HM`}
                     </Heading>
                     <Text>
                         {`I'm a Full-Stack Developer - Data Engineer, focused on `}
-                        <Link as="span" fontWeight="bold" href={process.env.REPO_URL}>
+                        <Link fontWeight="bold" href={github} isExternal>
                             Google Cloud Platform & NetSuite.
                         </Link>
                     </Text>
-                    <Button as={Link} href={process.env.CV_URL}>
+                    <Button as={Link} variant="solid" href={cv} isExternal>
                         Get my CV
                     </Button>
                 </VStack>
@@ -106,10 +62,12 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                 </SimpleGrid>
             </VStack>
             <VStack spacing={4} alignItems="stretch">
-                <Heading as="h2">Latest Articles</Heading>
-                {/* <ArticleList articles={articles} /> */}
+                <Heading as="h2" size="lg">
+                    Latest Articles
+                </Heading>
+                <ArticleList articles={articles} />
             </VStack>
-        </Container>
+        </VStack>
     );
 };
 

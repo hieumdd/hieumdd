@@ -9,14 +9,15 @@ type ArticleImageProps = {
 
 export const ArticleImage = ({ src, alt, ratio }: ArticleImageProps) => {
     return (
-        <AspectRatio position="relative" ratio={ratio}>
+        <AspectRatio position="relative" ratio={ratio} borderRadius="md">
             <NextImage
                 objectFit="cover"
                 layout="fill"
                 placeholder="blur"
-                src={src}
                 blurDataURL={src}
+                src={src}
                 alt={alt}
+                style={{ borderRadius: '6px' }}
             />
         </AspectRatio>
     );
