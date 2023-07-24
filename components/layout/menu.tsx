@@ -11,13 +11,7 @@ import {
     MenuList,
     MenuItem,
 } from '@chakra-ui/react';
-import {
-    HiOutlineDocumentText,
-    HiOutlineMail,
-    HiOutlineMenu,
-    HiOutlineStar,
-    HiOutlineX,
-} from 'react-icons/hi';
+import { HiOutlineDocumentText, HiOutlineMail, HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 
 type Link = {
     children: string;
@@ -27,12 +21,6 @@ type Link = {
 };
 
 const Links: Link[] = [
-    {
-        children: 'Services',
-        href: '/service',
-        variant: 'outline',
-        icon: <Icon as={HiOutlineStar} />,
-    },
     {
         children: 'Articles',
         href: '/article',
