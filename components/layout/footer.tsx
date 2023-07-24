@@ -1,15 +1,18 @@
 import { Container, LinkOverlay, LinkBox, Icon, Text } from '@chakra-ui/react';
-import { FaGithub } from 'react-icons/fa';
-
+import { IoLogoGithub } from 'react-icons/io';
 import dayjs from 'dayjs';
 
+import { useSocialLinks } from '../../hooks/use-social-link';
+
 export const Footer = () => {
+    const { repo } = useSocialLinks();
+
     return (
-        <Container as="footer" display="flex" justifyContent="space-between" pb="5vh">
-            <Text>{dayjs().year()} HM</Text>
+        <Container as="footer" my={8} display="flex" justifyContent="space-between">
+            <Text>HM @ {dayjs().year()}</Text>
             <LinkBox>
-                <LinkOverlay href={process.env.REPO_URL} isExternal>
-                    <Icon fontSize="1.5rem" as={FaGithub} display="block" />
+                <LinkOverlay href={repo} isExternal>
+                    <Icon fontSize="1.5rem" as={IoLogoGithub} display="block" />
                 </LinkOverlay>
             </LinkBox>
         </Container>

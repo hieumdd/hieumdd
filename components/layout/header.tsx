@@ -23,7 +23,7 @@ export const Header = () => {
             top={0}
             width="100%"
             zIndex={999}
-            bgColor="nord.50"
+            bgColor="white"
             boxShadow={y > 0 ? 'md' : 'none'}
         >
             <Container as="nav" flex="1" py={4} display="flex" justifyContent="space-between">
