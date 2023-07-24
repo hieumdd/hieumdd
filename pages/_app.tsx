@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { ChakraProvider } from '@chakra-ui/react';
+import TagManager from 'react-gtm-module';
 
 import { theme } from '../styles/theme';
 import { Header } from '../components/layout/header';
@@ -13,6 +15,14 @@ export type PageProps = {
 };
 
 const App = ({ Component, pageProps }: AppProps<PageProps>) => {
+    useEffect(() => {
+        TagManager.initialize({
+            gtmId: 'GTM-WVHZ39P',
+            auth: 'gkLJjnTuiGjzjTIUJQDSag',
+            preview: process.env.NEXT_PUBLIC_GTM_PREVIEW,
+        });
+    }, []);
+
     return (
         <>
             <DefaultSeo
