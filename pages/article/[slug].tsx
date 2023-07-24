@@ -29,14 +29,14 @@ const Article: NextPage<ArticleProps> = ({ mdx }) => {
         <VStack spacing={4} alignItems="stretch">
             <Breadcrumb>
                 <BreadcrumbItem>
-                    <NextLink href="/" passHref>
-                        <BreadcrumbLink>Home</BreadcrumbLink>
-                    </NextLink>
+                    <BreadcrumbLink as={NextLink} href="/">
+                        Home
+                    </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbItem>
-                    <NextLink href={path} passHref>
-                        <BreadcrumbLink isCurrentPage>{title}</BreadcrumbLink>
-                    </NextLink>
+                    <BreadcrumbLink as={NextLink} href={path} isCurrentPage>
+                        {title}
+                    </BreadcrumbLink>
                 </BreadcrumbItem>
             </Breadcrumb>
             <ArticleImage src={cover} alt={title} ratio={21 / 9} />
@@ -52,10 +52,9 @@ const Article: NextPage<ArticleProps> = ({ mdx }) => {
     );
 };
 
-
 export const getStaticPaths = async () => {
     const articles = await getFiles('article');
-    
+
     return {
         paths: articles.map((article) => ({ params: { slug: article.frontMatter.slug } })),
         fallback: false,

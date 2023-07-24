@@ -1,20 +1,42 @@
+import { Children, ReactElement } from 'react';
 import NextLink from 'next/link';
-import { Code, Heading, Link, ListItem, OrderedList, Text, UnorderedList } from '@chakra-ui/react';
+import {
+    Code,
+    Heading,
+    Link,
+    ListItem,
+    OrderedList,
+    Table,
+    Thead,
+    Tbody,
+    Tfoot,
+    Tr,
+    Th,
+    Td,
+    Text,
+    UnorderedList,
+} from '@chakra-ui/react';
 import { MDXRemoteProps } from 'next-mdx-remote';
 
 export const components: MDXRemoteProps['components'] = {
-    h2: (props) => <Heading as="h2" size="lg" {...props} />,
-    h3: (props) => <Heading as="h3" size="md" {...props} />,
     a: ({ href, children }) => {
         return (
-            <NextLink href={href as string} passHref>
-                <Link>{children}</Link>
-            </NextLink>
+            <Link as={NextLink} href={href as string}>
+                {children}
+            </Link>
         );
     },
+    code: (props) => <Code w={props.className ? 'full' : ''} {...props} />,
+    h2: (props) => <Heading as="h2" size="lg" {...props} />,
+    h3: (props) => <Heading as="h3" size="md" {...props} />,
+    li: (props) => <ListItem {...props} />,
+    ol: (props) => <OrderedList {...props} />,
     p: (props) => <Text {...props} />,
     ul: (props) => <UnorderedList {...props} />,
-    ol: (props) => <OrderedList {...props} />,
-    li: (props) => <ListItem ml="1em" {...props} />,
-    code: (props) => <Code flexGrow={1} {...props} />,
+    table: (props) => <Table {...props} />,
+    thead: (props) => <Thead {...props} />,
+    tbody: (props) => <Tbody {...props} />,
+    tr: (props) => <Tr {...props} />,
+    th: (props) => <Th {...props} />,
+    td: (props) => <Td {...props} />,
 };

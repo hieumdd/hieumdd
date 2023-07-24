@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import readingTime, { ReadTimeResults } from 'reading-time';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import remarkGfm from 'remark-gfm';
 import dayjs from 'dayjs';
 
 export type FrontMatter = {
@@ -27,10 +28,8 @@ const root = process.cwd();
 const dataDir = 'data';
 
 const getPaths = (type: string) => {
-    return fs
-        .readdirSync(path.join(root, dataDir, type))
-        .map((f) => f.replace(/\\/g, '/'))
-}
+    return fs.readdirSync(path.join(root, dataDir, type)).map((f) => f.replace(/\\/g, '/'));
+};
 
 export const getFile = async (type: string, slug: string): Promise<MDXFile> => {
     const source = fs.readFileSync(path.join(root, dataDir, type, `${slug}.mdx`), 'utf8');
@@ -40,7 +39,7 @@ export const getFile = async (type: string, slug: string): Promise<MDXFile> => {
         content: _content,
     } = matter(source);
 
-    const content = await serialize(_content);
+    const content = await serialize(_content, { mdxOptions: { remarkPlugins: [[remarkGfm]] } });
 
     return {
         content,
@@ -64,10 +63,9 @@ export const getFiles = async (type: string): Promise<MDXFile[]> => {
             .map((slug) => getFile(type, slug)),
     ).then((file) => {
         return file.sort((a, b) => {
-            return dayjs(a.frontMatter.updatedAt).isAfter(dayjs(b.frontMatter.updatedAt)) ? 1 : -1
-        })
-    }
-    );
+            return dayjs(a.frontMatter.updatedAt).isAfter(dayjs(b.frontMatter.updatedAt)) ? 1 : -1;
+        });
+    });
 
     return Array(25)
         .fill(files)
