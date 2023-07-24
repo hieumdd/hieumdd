@@ -32,7 +32,7 @@ const App = ({ Component, pageProps }: AppProps<PageProps>) => {
                 additionalLinkTags={[
                     {
                         rel: 'icon',
-                        href: 'icons/profile-nord.svg',
+                        href: 'icon/profile-nord.svg',
                     },
                 ]}
             />

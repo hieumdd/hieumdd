@@ -4,7 +4,7 @@ import { Box, Container, Flex, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { useWindowScroll } from 'react-use';
 
 import { DesktopMenu, MobileMenu } from './menu';
-import profileNord from '../../public/icons/profile-nord.svg';
+import profileNord from '../../public/icon/profile-nord.svg';
 
 export const Header = () => {
     const { y } = useWindowScroll();
