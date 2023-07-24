@@ -22,10 +22,5 @@ export const theme = extendTheme({
                 maxW: 'container.md',
             },
         },
-        Link: {
-            baseStyle: {
-                textDecor: 'underline',
-            },
-        },
     },
 });

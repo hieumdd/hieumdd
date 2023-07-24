@@ -28,10 +28,9 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                 spacing={4}
             >
                 <VStack
-                    direction="column"
-                    align="flex-start"
-                    textAlign="left"
-                    spacing={{ base: 2, md: 4 }}
+                    alignItems={{ base: 'center', md: 'flex-start' }}
+                    textAlign={{ base: 'center', md: 'left' }}
+                    spacing={4}
                     flex="1 0 50%"
                 >
                     <Heading as="h1" size="xl">
@@ -61,7 +60,7 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
             </VStack>
             <VStack spacing={4} alignItems="stretch">
                 <Heading as="h2" size="lg">
-                    Latest Articles
+                    Articles
                 </Heading>
                 <ArticleList articles={articles} />
             </VStack>
