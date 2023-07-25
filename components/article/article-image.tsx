@@ -8,8 +8,8 @@ type ArticleImageProps = {
 };
 
 export const ArticleImage = ({ src, alt, ratio }: ArticleImageProps) => {
-    const borderRadius = useToken('borderRadius', 'md');
-    
+    const borderRadius = useToken('radii', 'md');
+
     return (
         <AspectRatio position="relative" ratio={ratio} borderRadius="md">
             <NextImage
