@@ -23,7 +23,7 @@ export const Header = () => {
                 <Box display={{ base: 'block', md: 'none' }} boxSize={10} />
                 <LinkBox boxSize={10}>
                     <LinkOverlay as={NextLink} href="/" passHref>
-                        <NextImage src={profileNord} alt="" fill/>
+                        <NextImage src={profileNord} alt="" fill />
                     </LinkOverlay>
                 </LinkBox>
                 <DesktopMenu />

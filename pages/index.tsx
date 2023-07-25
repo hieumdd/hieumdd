@@ -1,15 +1,5 @@
 import type { NextPage } from 'next';
-import {
-    Box,
-    Button,
-    Heading,
-    Icon,
-    Link,
-    SimpleGrid,
-    Stack,
-    Text,
-    VStack,
-} from '@chakra-ui/react';
+import { Box, Button, Heading, Icon, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react';
 import { useLottie } from 'lottie-react';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
@@ -53,12 +43,7 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                             Google Cloud Platform & NetSuite.
                         </Link>
                     </Text>
-                    <Button
-                        as={Link}
-                        rightIcon={<Icon as={HiOutlineExternalLink} />}
-                        href={cv}
-                        isExternal
-                    >
+                    <Button as={Link} rightIcon={<Icon as={HiOutlineExternalLink} />} href={cv} isExternal>
                         Get my CV
                     </Button>
                 </VStack>

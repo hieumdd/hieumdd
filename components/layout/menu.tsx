@@ -51,10 +51,7 @@ export const MobileMenu = () => {
             <Menu>
                 {({ isOpen }) => (
                     <>
-                        <MenuButton
-                            as={IconButton}
-                            icon={isOpen ? <HiOutlineX /> : <HiOutlineMenu />}
-                        />
+                        <MenuButton as={IconButton} icon={isOpen ? <HiOutlineX /> : <HiOutlineMenu />} />
                         <MenuList>
                             {Links.map((link) => (
                                 <MenuItem key={link.href} as={NextLink} {...link} />

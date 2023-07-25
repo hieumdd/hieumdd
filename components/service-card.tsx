@@ -1,15 +1,4 @@
-import {
-    Card,
-    CardBody,
-    Heading,
-    HStack,
-    Icon,
-    Tag,
-    Text,
-    VStack,
-    Wrap,
-    WrapItem,
-} from '@chakra-ui/react';
+import { Card, CardBody, Heading, HStack, Icon, Tag, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 
 import { Service } from '../hooks/use-service';
 

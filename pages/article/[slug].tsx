@@ -1,14 +1,6 @@
 import { NextPage } from 'next';
 import NextLink from 'next/link';
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    VStack,
-    Text,
-    Heading,
-    Divider,
-} from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, VStack, Text, Heading, Divider } from '@chakra-ui/react';
 import { MDXRemote } from 'next-mdx-remote';
 
 import { PageProps } from '../_app';

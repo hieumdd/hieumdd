@@ -1,26 +1,26 @@
 ---
-title: "The basics of Data Analysis with SQL"
+title: 'The basics of Data Analysis with SQL'
 cover: image/yeo-khee--e6Xu27_T50-unsplash.jpg
-updatedAt: "2020-03-22"
-summary: "Get started with the fundamentals of Data Analysis & how data is presented"
+updatedAt: '2020-03-22'
+summary: 'Get started with the fundamentals of Data Analysis & how data is presented'
 tags:
-  - SQL
-  - Data Analysis
+    - SQL
+    - Data Analysis
 ---
 
 ## Determine the targeted end result
 
-The primary purpose of any data analysis work is to output crucial insights to make critical business decisions. The end result are usually in the form of 
+The primary purpose of any data analysis work is to output crucial insights to make critical business decisions. The end result are usually in the form of
 
-- Measurements & Metrics to be shown in reports
-- Charts & Visualisation: By far the most common form.
+-   Measurements & Metrics to be shown in reports
+-   Charts & Visualisation: By far the most common form.
 
 The latter point points out the primary use case of data analysis: To create beautiful & generate insightful reports. There are already plenty of data visualisation tool out there, for both personal and enterprise use cases (Power BI, Data Studio, Tableu, Qlik) just to name a few. All of them have one thing in common, which is the shape of the data to be ingested into the charts.
 
 For most charts, the two groups of data shape to be ingested are
 
-- Dimensions: They are static and represent a category or anything with the same role
-- Metrics: They are calculated from either directly or by grouping the dimensions together.
+-   Dimensions: They are static and represent a category or anything with the same role
+-   Metrics: They are calculated from either directly or by grouping the dimensions together.
 
 And most of the time, to facilliate this process, it is important to identify what are the dimensions & metrics needed for the charts, and from there, figure out the way to create a "temp table" for it.
 
@@ -28,13 +28,13 @@ And most of the time, to facilliate this process, it is important to identify wh
 
 Let's consider this example of "raw data".
 
-| order_id | date | item | value |
-| --- | --- | --- | --- |
-| 1 | 2022-01-01 | A | 5 |
-| 2 | 2022-01-01 | B | 10 |
-| 3 | 2022-01-01 | B | 10 |
-| 4 | 2022-01-02 | C | 15 |
-| 5 | 2022-01-02 | A | 20 |
+| order_id | date       | item | value |
+| -------- | ---------- | ---- | ----- |
+| 1        | 2022-01-01 | A    | 5     |
+| 2        | 2022-01-01 | B    | 10    |
+| 3        | 2022-01-01 | B    | 10    |
+| 4        | 2022-01-02 | C    | 15    |
+| 5        | 2022-01-02 | A    | 20    |
 
 This is a basic exaple of a Sales table for any generic company. Usually it should be in a normalized format (with primary key and foreign keys).
 
@@ -43,25 +43,21 @@ Right now the table has its data granularity at the **Order ID level**.
 Let's say, a business use case represented as a User as follow: **As a manager, I would want to see total of sales value for each item**. Here, we would have to bring the data granularity up a level, which is at the `item` level
 
 | item | value |
-| --- | ---: |
-| A | 25 |
-| B | 20 |
-| C | 15 |
+| ---- | ----: |
+| A    |    25 |
+| B    |    20 |
+| C    |    15 |
 
 In the raw data, the primary key was `order_id`, but now, when we "group by" item, the "primary key" has turned into item. Notice `order_id` and `date` has vanished from the table, since the data is no long distinct at their corresponding levels.
-
 
 ## Getting started
 
 ## How about some code?
 
 ```js
-var React = require("react");
-var Markdown = require("react-markdown");
-React.render(
-  <Markdown source="# Your markdown here" />,
-  document.getElementById("content")
-);
+var React = require('react');
+var Markdown = require('react-markdown');
+React.render(<Markdown source="# Your markdown here" />, document.getElementById('content'));
 ```
 
 Pretty neat, eh?
@@ -70,6 +66,6 @@ Pretty neat, eh?
 
 | Feature   | Support |
 | --------- | ------- |
-| tables    | ✔       |
-| alignment | ✔       |
-| wewt      | ✔       |
+| tables    | ✔      |
+| alignment | ✔      |
+| wewt      | ✔      |

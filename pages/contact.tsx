@@ -10,11 +10,7 @@ const Contact: NextPage = () => {
     const { email, github, linkedin } = useSocialLinks();
 
     return (
-        <Stack
-            direction={{ base: 'column-reverse', md: 'row' }}
-            justifyContent="space-between"
-            spacing={8}
-        >
+        <Stack direction={{ base: 'column-reverse', md: 'row' }} justifyContent="space-between" spacing={8}>
             <InlineWidget
                 url="https://calendly.com/hieumdd"
                 pageSettings={{ hideEventTypeDetails: true, hideGdprBanner: true }}
