@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 export const ArticleComment = () => {
     const commentBox = useRef<HTMLDivElement>(null);
@@ -13,8 +13,8 @@ export const ArticleComment = () => {
         script.setAttribute('repo', 'hieumdd/hieumdd');
         script.setAttribute('issue-term', 'pathname');
 
-        commentBox && commentBox.current && commentBox.current.appendChild(script);
+        (commentBox.current as HTMLDivElement).appendChild(script);
     }, []);
 
-    return <Flex ref={commentBox} />;
+    return <Box ref={commentBox} />;
 };
