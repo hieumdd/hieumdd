@@ -4,6 +4,7 @@ import { DefaultSeo } from 'next-seo';
 import { ChakraProvider } from '@chakra-ui/react';
 import TagManager from 'react-gtm-module';
 
+import { useDefaultSEO } from '../hooks/use-seo';
 import { theme } from '../styles/theme';
 import { Header } from '../components/layout/header';
 import { Footer } from '../components/layout/footer';
@@ -25,17 +26,7 @@ const App = ({ Component, pageProps }: AppProps<PageProps>) => {
 
     return (
         <>
-            <DefaultSeo
-                title={pageProps.title}
-                titleTemplate="%s | HM"
-                description="Portfolio"
-                additionalLinkTags={[
-                    {
-                        rel: 'icon',
-                        href: 'icon/profile-nord.svg',
-                    },
-                ]}
-            />
+            <DefaultSeo {...useDefaultSEO(pageProps.title)} />
             <ChakraProvider theme={theme}>
                 <Header />
                 <Layout>
