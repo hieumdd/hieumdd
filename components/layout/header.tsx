@@ -17,7 +17,7 @@ export const Header = () => {
             width="100%"
             zIndex={999}
             bgColor="white"
-            boxShadow={y > 0 ? 'md' : 'none'}
+            boxShadow={y > 0 ? 'base' : 'none'}
         >
             <Container as="nav" flex="1" py={4} display="flex" justifyContent="space-between">
                 <Box display={{ base: 'block', md: 'none' }} boxSize={10} />
