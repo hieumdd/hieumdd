@@ -27,5 +27,10 @@ export const theme = extendTheme({
                 colorScheme: 'cerulean',
             },
         },
+        Tag: {
+            defaultProps: {
+                colorScheme: 'cerulean',
+            },
+        },
     },
 });

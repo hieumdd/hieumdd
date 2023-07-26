@@ -1,5 +1,6 @@
 import { IconType } from 'react-icons';
-import { FaChartLine, FaCode, FaFingerprint, FaCog } from 'react-icons/fa';
+import { HiOutlineCode, HiOutlineCube, HiOutlineDatabase } from 'react-icons/hi';
+import { IoFingerPrintOutline } from 'react-icons/io5';
 
 export type Service = {
     title: string;
@@ -11,30 +12,26 @@ export type Service = {
 export const useServices = (): Service[] => [
     {
         title: 'Data Engineering',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
-        icon: FaCode,
-        tools: ['Google Cloud Platform', 'Python', 'TypeScript', 'Docker', 'Github Action'],
+        description: `Creating a full lifecycle of data pipelines from sources integrations to analytics in BigQuery`,
+        icon: HiOutlineCode,
+        tools: ['Google Cloud Platform'],
     },
     {
-        title: 'Data Analytics & Visualisation',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
-        icon: FaChartLine,
-        tools: ['BigQuery', 'SQL', 'Data Studio', 'Power BI', 'Custom Visualisation'],
+        title: 'NetSuite Development',
+        description: `Account Customizations & SuiteApps to fulfill any business requirements to fully exploit NetSuite's capabilities`,
+        icon: HiOutlineCube,
+        tools: ['SuiteScript', 'SuiteTalk'],
     },
     {
         title: 'Digital Tracking & Analytics',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
-        icon: FaFingerprint,
-        tools: ['Google Tag Manager', 'Google Analytics'],
+        description: 'Events tracking for web & apps to ensure high-granular data to be used for further analysis',
+        icon: IoFingerPrintOutline,
+        tools: ['Google Tag Manager'],
     },
     {
         title: 'Integration & Automation',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo a velit ac malesuada. Morbi euismod urna eu urna euismod tincidunt.',
-        icon: FaCog,
-        tools: ['NetSuite SuiteScript', 'AppScript'],
+        description: 'Full-stack development for every framework integrations & automations',
+        icon: HiOutlineDatabase,
+        tools: ['TypeScript', 'Python', 'Docker', 'Githib Actions'],
     },
 ];
