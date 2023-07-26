@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import NextImage from 'next/image';
-import { Box, Container, Flex, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Box, Container, Flex, LinkBox, LinkOverlay, Show } from '@chakra-ui/react';
 import { useWindowScroll } from 'react-use';
 
 import { DesktopMenu, MobileMenu } from './menu';
@@ -20,14 +20,20 @@ export const Header = () => {
             boxShadow={y > 0 ? 'base' : 'none'}
         >
             <Container as="nav" flex="1" py={4} display="flex" justifyContent="space-between">
-                <Box display={{ base: 'block', md: 'none' }} boxSize={10} />
+                <Show below="md">
+                    <Box boxSize={10} />
+                </Show>
                 <LinkBox boxSize={10}>
                     <LinkOverlay as={NextLink} href="/" passHref>
                         <NextImage src={profileNord} alt="" fill />
                     </LinkOverlay>
                 </LinkBox>
-                <DesktopMenu />
-                <MobileMenu />
+                <Show above="md">
+                    <DesktopMenu />
+                </Show>
+                <Show below="md">
+                    <MobileMenu />
+                </Show>
             </Container>
         </Flex>
     );
