@@ -37,7 +37,7 @@ const Links: Link[] = [
 
 export const DesktopMenu = () => {
     return (
-        <HStack display={{ base: 'none', md: 'flex' }} spacing={4}>
+        <HStack spacing={4}>
             {Links.map((link) => (
                 <Button key={link.href} as={NextLink} rightIcon={link.icon} {...link} />
             ))}
@@ -47,7 +47,7 @@ export const DesktopMenu = () => {
 
 export const MobileMenu = () => {
     return (
-        <Box display={{ base: 'block', md: 'none' }}>
+        <Box>
             <Menu>
                 {({ isOpen }) => (
                     <>
