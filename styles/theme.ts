@@ -27,6 +27,11 @@ export const theme = extendTheme({
                 colorScheme: 'cerulean',
             },
         },
+        CloseButton: {
+            defaultProps: {
+                colorScheme: 'cerulean',
+            },
+        },
         Tag: {
             defaultProps: {
                 colorScheme: 'cerulean',
