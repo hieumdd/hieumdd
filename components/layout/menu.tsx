@@ -1,17 +1,19 @@
+import { useRef } from 'react';
 import NextLink from 'next/link';
 import {
-    Box,
     Button,
     ButtonProps,
+    Drawer,
+    DrawerBody,
+    DrawerOverlay,
+    DrawerContent,
     HStack,
     Icon,
     IconButton,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
+    VStack,
+    useDisclosure,
 } from '@chakra-ui/react';
-import { HiOutlineDocumentText, HiOutlineMail, HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
+import { HiOutlineDocumentText, HiOutlineMail, HiOutlineMenu } from 'react-icons/hi';
 
 type Link = {
     children: string;
@@ -46,20 +48,22 @@ export const DesktopMenu = () => {
 };
 
 export const MobileMenu = () => {
+    const btnRef = useRef<HTMLButtonElement>(null);
+    const { isOpen, onClose, onOpen } = useDisclosure();
+
     return (
-        <Box>
-            <Menu>
-                {({ isOpen }) => (
-                    <>
-                        <MenuButton as={IconButton} icon={isOpen ? <HiOutlineX /> : <HiOutlineMenu />} />
-                        <MenuList>
-                            {Links.map((link) => (
-                                <MenuItem key={link.href} as={NextLink} {...link} />
-                            ))}
-                        </MenuList>
-                    </>
-                )}
-            </Menu>
-        </Box>
+        <>
+            <IconButton icon={<Icon as={HiOutlineMenu} />} onClick={onOpen} aria-label="" />
+            <Drawer isOpen={isOpen} placement="top" onClose={onClose} finalFocusRef={btnRef}>
+                <DrawerOverlay />
+                <DrawerContent>
+                    <DrawerBody as={VStack} p={4} alignItems="stretch">
+                        {Links.map((link) => (
+                            <Button key={link.href} as={NextLink} {...link} />
+                        ))}
+                    </DrawerBody>
+                </DrawerContent>
+            </Drawer>
+        </>
     );
 };
